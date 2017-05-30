@@ -1,5 +1,6 @@
 # coding=utf-8
 # Daniel Juenger, github.com/sleeepyjack
+# Editied for Python 3.x by James L. Key
 
 import subprocess
 from time import sleep
