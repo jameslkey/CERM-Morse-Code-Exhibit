@@ -1,0 +1,31 @@
+{
+  "Constants": [
+    {
+      "DefaultWPM": 13,
+      "MaxWPM": 25
+    }
+  ],
+  "LCDPins": [
+    {
+      "Pin1": 2,
+      "Pin2": 3
+    }
+  ],
+  "RelayPin": [
+    {
+      "Pin": 26
+    }
+  ],
+  "MotionDetectorPin": [
+    {
+      "Pin": 20
+    }
+  ],
+  "General": [
+    {
+      "SpeedAdjustButtonsEnabled": true,
+      "Color": "MAGENTA",
+      "ParagraphSep": "\u00B6"
+    }
+  ]
+}
