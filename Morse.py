@@ -34,7 +34,7 @@ class CERMMorse:
 
         if configpath is None:
             configpath = os.path.dirname(os.getcwd())
-            configpath = os.path.join(configpath, 'CERMMorse')
+            configpath = os.path.join(configpath, 'CERM-Morse-Code-Exhibit')
             configpath = os.path.join(configpath, 'data')
             configpath = os.path.join(configpath, 'config.json')
         self._configpath = os.path.normpath(configpath)
