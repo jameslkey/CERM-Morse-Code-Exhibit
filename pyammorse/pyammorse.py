@@ -1,7 +1,7 @@
 # coding=utf-8
 """
 CERMMorse : pyammorse
-5/12/2017 : 3:46 PM
+6/17/2017 : 11:59 PM
 Author : James L. Key
 """
 # todo: write comments!!!
@@ -11,6 +11,7 @@ __project__ = 'CERMMorse'
 
 
 class Morse:
+
     #: This should show up
     def __init__(self):
         self.amMorseTable = {
@@ -78,16 +79,16 @@ class Morse:
     def morsedecode(self, code, position_in_string=0):
         stream = list(code)
         if stream == '':
-            return ""
-        if stream[-1] != "\\":
-            stream.append("\\")
+            return ''
+        if stream[-1] != '~':  # ~ is used as the marker between character elements
+            stream.append('~')
         code = ''.join(stream)
         if position_in_string < len(code):
             morse_letter = ""
 
             for key, char in enumerate(code[position_in_string:]):
 
-                if char == "\\":
+                if char == "~":
                     position_in_string = key + position_in_string + 1
                     letter = self.revamMorseTable[morse_letter]
                     return letter + self.morsedecode(code, position_in_string)
@@ -102,6 +103,6 @@ class Morse:
     def morseencode(self, message):
         encoded_message = ""
         for char in message[:]:
-            encoded_message += self.amMorseTable[char.upper()] + "\\"
+            encoded_message += self.amMorseTable[char.upper()] + "~"
 
         return encoded_message

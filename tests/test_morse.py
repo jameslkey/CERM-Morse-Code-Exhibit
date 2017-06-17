@@ -1,13 +1,12 @@
 # coding=utf-8
 """
 CERMMorse : test_morse
-5/7/2017 : 11:31 PM
+6/17/2017 : 11:59 PM
 Author : James L. Key
 """
-import random
 from unittest import TestCase
-
 import pyammorse
+import random
 
 __author__ = 'James L. Key'
 __project__ = 'CERMMorse'
@@ -41,7 +40,7 @@ class TestMorse(TestCase):
         sample = sample + random.sample(list(self.morse.revamMorseTable), 40)
         randtext = ''
         for char in sample:
-            randtext = randtext + char + "\\"
+             randtext = randtext + char + '~'
         out = self.morse.morsedecode(randtext)
         print(out)
         out = self.morse.morseencode(out)
