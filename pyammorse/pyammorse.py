@@ -78,10 +78,10 @@ class Morse:
 
     def morsedecode(self, code, position_in_string=0):
         stream = list(code)
-        if stream == '':
-            return ''
-        if stream[-1] != '~':  # ~ is used as the marker between character elements
-            stream.append('~')
+        if stream == "":
+            return ""
+        if stream[-1] != "~":  # ~ is used as the marker between character elements
+            stream.append("~")
         code = ''.join(stream)
         if position_in_string < len(code):
             morse_letter = ""

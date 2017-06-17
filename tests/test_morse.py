@@ -38,9 +38,9 @@ class TestMorse(TestCase):
         sample = sample + random.sample(list(self.morse.revamMorseTable), 40)
         sample = sample + random.sample(list(self.morse.revamMorseTable), 40)
         sample = sample + random.sample(list(self.morse.revamMorseTable), 40)
-        randtext = ''
+        randtext = ""
         for char in sample:
-             randtext = randtext + char + '~'
+             randtext = randtext + char + "~"
         out = self.morse.morsedecode(randtext)
         print(out)
         out = self.morse.morseencode(out)
