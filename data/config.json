@@ -1,7 +1,7 @@
 {
   "Constants": [
     {
-      "DefaultWPM": 13,
+      "DefaultWPM": 18,
       "MaxWPM": 25
     }
   ],

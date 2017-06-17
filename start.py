@@ -6,15 +6,15 @@ Author : James L. Key
 
 Loads the main function from morse as a daemon
 This seems to only work in *nix
-requires python-daemon module
+requires python-daemon-3k module
 """
 
 import daemon
 
-from Morse import main
+from Morse import CERMMorse
 
 __author__ = 'James L. Key'
 __project__ = 'CERMMorse'
 
 with daemon.DaemonContext():
-    main()
+    CERMMorse.main()
