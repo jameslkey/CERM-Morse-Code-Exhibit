@@ -148,7 +148,7 @@ class CERMMorse:
         pm = PlayMorse(self.conf.WPM, self.conf)
         trans = pyammorse.Morse()
 
-        for char in message.split('\\'):
+        for char in message.split('~'):
             display = trans.morsedecode(str(char))
             pm.playchar(char)
             self.displaychar(display)
@@ -170,6 +170,8 @@ class CERMMorse:
 
     def displaychar(self, char):
         # Process for special Characters
+        if not char:  # catch null characters
+            return
         if char == '\u00B6':  # Pilcrow
             char = '\x00'
         if char == '\u201C':  # Open left double quote
@@ -183,7 +185,8 @@ class CERMMorse:
             self._charbuffer.append(char)
         if len(self._charbuffer) >= 15 or char == ' ' or char == '\x00' or char == ':':
             self.lcd.clear()
-            self.lcd.message(self._charbuffer)
+            if self._charbuffer: 
+                self.lcd.message(self._charbuffer)
             self._charbuffer.clear()
 
 
