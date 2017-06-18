@@ -79,15 +79,16 @@ class Morse:
         stream = list(code)
         if stream == '':
             return ""
-        if stream[-1] != "\\":
-            stream.append("\\")
+        if stream:  #catch fencepost error
+            if stream[-1] != "~":
+                stream.append("~")
         code = ''.join(stream)
         if position_in_string < len(code):
             morse_letter = ""
 
             for key, char in enumerate(code[position_in_string:]):
 
-                if char == "\\":
+                if char == "~":
                     position_in_string = key + position_in_string + 1
                     letter = self.revamMorseTable[morse_letter]
                     return letter + self.morsedecode(code, position_in_string)
@@ -98,10 +99,10 @@ class Morse:
         else:
             return ""
 
-    # encode a message in morse code, spaces between words are represented by '\'
+    # encode a message in morse code, spaces between words are represented by '~'
     def morseencode(self, message):
         encoded_message = ""
         for char in message[:]:
-            encoded_message += self.amMorseTable[char.upper()] + "\\"
+            encoded_message += self.amMorseTable[char.upper()] + "~"
 
         return encoded_message
