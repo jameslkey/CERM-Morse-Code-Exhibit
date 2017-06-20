@@ -11,7 +11,7 @@ import os
 import time
 from random import randrange
 
-import pyammorse
+import pymorse
 import readconfig
 import rpimorsedrv
 from playmorse import PlayMorse
@@ -102,7 +102,7 @@ class CERMMorse:
             self.getmessage(wol, msgnum)
 
             # Encode message to code
-            trans = pyammorse.Morse()
+            trans = pymorse.Morse()
             tonum_morse = trans.morseencode('ORDER NUMBER:' + wol.TONum)
             locissued_morse = trans.morseencode('LOCATION:' + wol.LocIssued)
             date_morse = trans.morseencode("DATE:" + wol.Date)
@@ -146,7 +146,7 @@ class CERMMorse:
 
     def sendmessage(self, message):
         pm = PlayMorse(self.conf.WPM, self.conf)
-        trans = pyammorse.Morse()
+        trans = pymorse.Morse()
 
         for char in message.split('\\'):
             display = trans.morsedecode(str(char))
