@@ -21,6 +21,9 @@ class GUI(wx.Frame):
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"CERM Morse Code Work Order and Configuration Editor",
                           pos=wx.DefaultPosition, size=wx.Size(600, 650),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+
         self.functions = Events(self)
         self.panel = wx.Panel(self, -1)
         # add two buttons and text control
