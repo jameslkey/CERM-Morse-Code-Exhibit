@@ -1,23 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Comments go here!!!
+Library of Path Tools
 
-Parsing Control for Adafruit_CharLCD in CERMMorse.
-
+:module: Pathtools
 :program: CERMMorse
-:file: playmorse
+:file: pathtools
 :platform: Cross-Platform
 :synopsis: Change this text.
 
 .. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
 
-.. py:currentmodule:: PlayMorse
+.. py:currentmodule:: Pathtools
 
 """
 
-from .playmorse import PlayMorse
+from .pathtools import PathTools
 
 __author__ = 'James L. Key'
 __project__ = 'CERM20'
+__all__ = ['PathTools', ]
 
-__all__ = ['PlayMorse', ]

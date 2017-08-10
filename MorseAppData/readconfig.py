@@ -1,0 +1,112 @@
+# -*- coding: utf-8 -*-
+"""
+Comments go here!!!
+
+Parsing Control for Adafruit_CharLCD in CERMMorse.
+
+:program: CERMMorse
+:file: readonfig
+:platform: Cross-Platform
+:synopsis: Change this text.
+
+.. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
+
+.. py:currentmodule:: MorseAppData
+
+"""
+
+import json
+import os
+
+try:
+    from FrozenJSON import FrozenJSON
+except ImportError:
+    import sys
+
+    FrozenJSON = sys.modules[__package__ + '.FrozenJSON']
+
+
+class MorseConfig:
+    # pylint: disable=R0902
+
+    r"""
+    Simply loads config data from a json file and into a class that can be accessed
+    by the calling application. Specifically designed for CERMMorse program. It has little to
+    no exception handling at present.
+
+    .. todo:: create option to build new default config data file
+
+    :param configpath:
+
+    """
+    def __init__(self, configpath: str = ''):
+        self._config_path = configpath
+        if self._config_path == '':
+            loc_path = os.path.dirname(__file__)
+            self._config_path = os.path.join(os.path.sep, loc_path, '..', '..', 'data', 'config.json')
+        j_s_o_n = os.path.normpath(self._config_path)
+
+        if not os.path.exists(j_s_o_n):
+            pass
+
+        # Needs utf-8 encoding to force raspbian to read correctly
+        with open(j_s_o_n, 'r', encoding='utf-8') as file:
+            rawconfigdata = json.load(file)
+        self._configdata = FrozenJSON(rawconfigdata)
+
+        self.lcd_pin1 = 99
+        self.lcd_pin2 = 99
+        self.relay_pin = 99
+        self.motion_det_pin = 99
+        self.wpm = 99
+        self.max_wpm = 99
+        self.speed_adjust = False
+        self._color_str = ''
+        self.color = [55, 55, 55]  # set stupid value so it fails its 'get' doesn't work
+        self.paragraph_sep = 'XXX'
+        self.station_color = False
+        # Initialize data
+        self.getconfig()  # get values
+
+    @property
+    def config_path(self) -> str:
+        r"""
+        Property: Path to the MorseConfig JSON file
+
+        :getter: Get MorseConfig.config_path property
+        :setter (String): Set MorseConfig.config_path property - Allows changing the file path
+
+        """
+        return self._config_path
+
+    @config_path.setter
+    def config_path(self, configpath: str):
+        r"""
+        Setter method for _config_path
+
+        """
+        self._config_path = configpath
+        if self._config_path == '':
+            self._config_path = os.path.dirname(os.getcwd())
+            self._config_path = os.path.join(self._config_path, 'CERMMorse')
+            self._config_path = os.path.join(self._config_path, 'data')
+            self._config_path = os.path.join(self._config_path, 'config.json')
+
+    def getconfig(self):
+        r"""
+        Optional method to load the config data into the data again.
+        This happens on init of the class, but can be used to load changes,
+        if the config file is changed.
+
+        """
+        self.lcd_pin1 = int(self._configdata.LCDPins[0].Pin1)
+        self.lcd_pin2 = int(self._configdata.LCDPins[0].Pin2)
+        self.relay_pin = int(self._configdata.RelayPin[0].Pin)
+        self.motion_det_pin = int(self._configdata.MotionDetectorPin[0].Pin)
+        self.wpm = int(self._configdata.Constants[0].DefaultWPM)
+        self.max_wpm = int(self._configdata.Constants[0].MaxWPM)
+        self.speed_adjust = bool(self._configdata.General[0].SpeedAdjustButtonsEnabled)
+        self._color_str = str(self._configdata.General[0].Color)
+        self.color = self._parse_color()
+        self.paragraph_sep = str(self._configdata.General[0].ParagraphSep)
+        self.station_color_enabled = bool(self._configdata.General[0].StationColor)

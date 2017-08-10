@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {},
+    "id": "http://example.com/example.json",
+    "properties": {
+        "WorkOrder": {
+            "id": "/properties/WorkOrder",
+            "items": {
+                "id": "/properties/WorkOrder/items",
+                "properties": {
+                    "At": {
+                        "description": "err...",
+                        "id": "/properties/WorkOrder/items/properties/At",
+                        "title": "At",
+                        "type": "string"
+                    },
+                    "Date": {
+                        "description": "Date of the work order",
+                        "id": "/properties/WorkOrder/items/properties/Date",
+                        "title": "Date",
+                        "type": "string"
+                    },
+                    "Dispatcher": {
+                        "description": "Dispatcher Name",
+                        "id": "/properties/WorkOrder/items/properties/Dispatcher",
+                        "title": "Dispatcher Name",
+                        "type": "string"
+                    },
+                    "ID": {
+                        "description": "System number for ID, must be unique",
+                        "id": "/properties/WorkOrder/items/properties/ID",
+                        "title": "Work order ID",
+                        "type": "integer"
+                    },
+                    "LocIssued": {
+                        "description": "Location where the train order was issued from",
+                        "id": "/properties/WorkOrder/items/properties/LocIssued",
+                        "title": "Location Issued",
+                        "type": "string"
+                    },
+                    "Operator": {
+                        "description": "Name of sending Morse operator",
+                        "id": "/properties/WorkOrder/items/properties/Operator",
+                        "title": "Operator Name",
+                        "type": "string"
+                    },
+                    "StationColor": {
+                        "description": "Color to display when the work order plays. Used to differentiate sending stations, for ex. upstream, downstream",
+                        "id": "/properties/WorkOrder/items/properties/StationColor",
+                        "title": "Station Color",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Status of the workorder",
+                        "id": "/properties/WorkOrder/items/properties/Status",
+                        "pattern": "MadeComplete|Fulfilled|Superseded|Annulled",
+                        "title": "Status",
+                        "type": "string"
+                    },
+                    "TONum": {
+                        "description": "Train Order Number",
+                        "id": "/properties/WorkOrder/items/properties/TONum",
+                        "title": "Train Order Number",
+                        "type": "integer"
+                    },
+                    "Text": {
+                        "description": "The actual message in the work order",
+                        "id": "/properties/WorkOrder/items/properties/Text",
+                        "title": "Message Text",
+                        "type": "string"
+                    },
+                    "Time": {
+                        "description": "Time work order written",
+                        "id": "/properties/WorkOrder/items/properties/Time",
+                        "title": "Time",
+                        "type": "string"
+                    },
+                    "To": {
+                        "description": "Train to receive the work order",
+                        "id": "/properties/WorkOrder/items/properties/To",
+                        "title": "To Train Name and number",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "LocIssued",
+                    "Status",
+                    "Text",
+                    "Dispatcher",
+                    "Date",
+                    "To",
+                    "At",
+                    "StationColor",
+                    "Time",
+                    "TONum",
+                    "ID",
+                    "Operator"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "WorkOrder"
+    ],
+    "type": "object"
+}

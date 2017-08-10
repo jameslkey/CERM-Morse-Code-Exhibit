@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Parsing Control for Adafruit_CharLCD in CERMMorse.
+Comments go here!!!
+
+Screen display library fro Adafruit CharLCD
 
 :program: CERMMorse
-:file: pymorse
+:file: lcdscroll
 :platform: Cross-Platform
 :synopsis: Change this text.
 
 .. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
 
-.. py:currentmodule:: PyMorse
+.. py:currentmodule:: LcdScroll
 
 """
 
-from .pymorse import Morse
+from .lcdscroll import LcdScroll
 
-__all__ = ['Morse', ]
+__all__ = ['LcdScroll', ]

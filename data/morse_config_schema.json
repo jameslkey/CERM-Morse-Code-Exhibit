@@ -1,0 +1,166 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {},
+    "id": "http://example.com/example.json",
+    "properties": {
+        "Constants": {
+            "id": "/properties/Constants",
+            "items": {
+                "id": "/properties/Constants/items",
+                "properties": {
+                    "DefaultWPM": {
+                        "description": "Default Words per Minute",
+                        "id": "/properties/Constants/items/properties/DefaultWPM",
+                        "maximum": 29,
+                        "minimum": 3,
+                        "title": "Default Words per Minute",
+                        "type": "integer"
+                    },
+                    "MaxWPM": {
+                        "description": "Max Words per Minute",
+                        "id": "/properties/Constants/items/properties/MaxWPM",
+                        "maximum": 30,
+                        "minimum": 5,
+                        "title": "Max Words per Minute",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "MaxWPM",
+                    "DefaultWPM"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "General": {
+            "id": "/properties/General",
+            "items": {
+                "id": "/properties/General/items",
+                "properties": {
+                    "Color": {
+                        "description": "LCD Display Color ",
+                        "id": "/properties/General/items/properties/Color",
+                        "pattern": "WHITE|BLUE|RED|GREEN|YELLOW|CYAN|MAGENTA",
+                        "title": "LCD Display Color",
+                        "type": "string"
+                    },
+                    "MorseVersion": {
+                        "description": "Version of Morse code to use",
+                        "id": "/properties/General/items/properties/MorseVersion",
+                        "pattern": "AMERICAN|INTERNATIONAL",
+                        "title": "Morse Version",
+                        "type": "string"
+                    },
+                    "ParagraphSep": {
+                        "description": "Character displayed when the end of paragraph \"code\" is played",
+                        "id": "/properties/General/items/properties/ParagraphSep",
+                        "title": "Paragraph Separator",
+                        "type": "string"
+                    },
+                    "SpeedAdjustButtonsEnabled": {
+                        "description": "Set to true to enable buttons on the LCD Plate for speed change",
+                        "id": "/properties/General/items/properties/SpeedAdjustButtonsEnabled",
+                        "title": "Speed Adjust Buttons Enabled",
+                        "type": "boolean"
+                    },
+                    "StationColors": {
+                        "description": "Set to true to enable per station display colors",
+                        "id": "/properties/General/items/properties/StationColors",
+                        "title": "Per Station Colors Enabled",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "Color",
+                    "ParagraphSep",
+                    "MorseVersion",
+                    "SpeedAdjustButtonsEnabled",
+                    "StationColors"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "LCDPins": {
+            "id": "/properties/LCDPins",
+            "items": {
+                "id": "/properties/LCDPins/items",
+                "properties": {
+                    "Pin1": {
+                        "description": "LCD I2C Plate connection for Pin2",
+                        "id": "/properties/LCDPins/items/properties/Pin1",
+                        "maximum": 3,
+                        "minimum": 0,
+                        "title": "GPIO (BCM#) connection LCD I2C pin2",
+                        "type": "integer"
+                    },
+                    "Pin2": {
+                        "description": "LCD I2C Plate connection for Pin1",
+                        "id": "/properties/LCDPins/items/properties/Pin2",
+                        "maximum": 3,
+                        "minimum": 0,
+                        "title": "GPIO (BCM#) connection LCD I2C pin1",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "Pin2",
+                    "Pin1"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "MotionDetectorPin": {
+            "id": "/properties/MotionDetectorPin",
+            "items": {
+                "id": "/properties/MotionDetectorPin/items",
+                "properties": {
+                    "Pin": {
+                        "description": "GPIO (BCM) Motion Detector pin",
+                        "id": "/properties/MotionDetectorPin/items/properties/Pin",
+                        "maximum": 27,
+                        "minimum": 0,
+                        "title": "GPIO (BCM) connection pin for PIR Motion Detector",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "Pin"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "RelayPin": {
+            "id": "/properties/RelayPin",
+            "items": {
+                "id": "/properties/RelayPin/items",
+                "properties": {
+                    "Pin": {
+                        "description": "GPIO (BCM) connection pin for Relay",
+                        "id": "/properties/RelayPin/items/properties/Pin",
+                        "maximum": 27,
+                        "minimum": 0,
+                        "title": "GPIO (BCM) Relay pin",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "Pin"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "RelayPin",
+        "MotionDetectorPin",
+        "LCDPins",
+        "Constants",
+        "General"
+    ],
+    "type": "object"
+}

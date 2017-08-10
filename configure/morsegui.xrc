@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="BaseFrame">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>600,650</size>
+		<title>CERM Morse Code Work Order and Configuration Editor</title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxNotebook" name="notebook">
+			<object class="notebookpage">
+				<label>Work Order</label>
+				<selected>0</selected>
+				<object class="wxScrolledWindow" name="scrlwin_wo">
+					<style>wxHSCROLL|wxVSCROLL</style>
+					<scrollrate>5,5</scrollrate>
+					<object class="wxBoxSizer">
+						<orient>wxVERTICAL</orient>
+						<object class="sizeritem">
+							<option>1</option>
+							<flag>wxEXPAND</flag>
+							<border>5</border>
+							<object class="wxSplitterWindow" name="spliter_wo">
+								<style>wxSP_3D</style>
+								<sashpos>135</sashpos>
+								<gravity>0.25</gravity>
+								<minsize>0</minsize>
+								<orientation>vertical</orientation>
+								<object class="wxPanel" name="pnl_wo_left">
+									<style>wxTAB_TRAVERSAL</style>
+									<object class="wxStaticBoxSizer">
+										<orient>wxVERTICAL</orient>
+										<label>Work Order List</label>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxListBox" name="listbox_wo">
+												<style>wxLB_HSCROLL</style>
+												<content>
+													<item>Workorder 001</item>
+													<item>Workorder 002</item>
+													<item>Workorder 003</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxTOP</flag>
+											<border>5</border>
+											<object class="wxBoxSizer">
+												<orient>wxVERTICAL</orient>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL</flag>
+													<border>5</border>
+													<object class="wxButton" name="btn_add_wo">
+														<label>Add Workorder</label>
+														<default>0</default>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL</flag>
+													<border>5</border>
+													<object class="wxButton" name="btn_delete_wo">
+														<label>Delete Workorder</label>
+														<default>0</default>
+													</object>
+												</object>
+											</object>
+										</object>
+									</object>
+								</object>
+								<object class="wxPanel" name="pnl_wo_right">
+									<style>wxTAB_TRAVERSAL</style>
+									<object class="wxStaticBoxSizer">
+										<orient>wxVERTICAL</orient>
+										<label>Selected Workorder</label>
+										<object class="sizeritem">
+											<option>1</option>
+											<flag>wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxFlexGridSizer">
+												<rows>0</rows>
+												<cols>2</cols>
+												<vgap>0</vgap>
+												<hgap>0</hgap>
+												<growablecols></growablecols>
+												<growablerows></growablerows>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_wo_id">
+														<label>Work Order ID #:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_wo_id_disp">
+														<font>
+															<style>normal</style>
+															<weight>bold</weight>
+															<underlined>0</underlined>
+														</font>
+														<label>MyLabel</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_to_num">
+														<label>Train Order #:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_to_num">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_loc">
+														<label>Location Issued:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_loc">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_date">
+														<label>Date:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxDatePickerCtrl" name="dp_date">
+														<style>wxDP_DEFAULT</style>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_to">
+														<label>To Train:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_to">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_at">
+														<label>At:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_at">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_text">
+														<label>Message Text:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_text">
+														<style>wxHSCROLL|wxTE_MULTILINE</style>
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_status">
+														<label>Status:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxComboBox" name="cb_status">
+														<value>Made Complete</value>
+														<content>
+															<item>Made Complete</item>
+															<item>Fulfilled</item>
+															<item>Superseded</item>
+															<item>Annulled</item>
+														</content>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_time">
+														<label>Time:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxDatePickerCtrl" name="tp_time">
+														<style>wxDP_DEFAULT</style>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_disp">
+														<label>Dispatcher:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_disp">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_RIGHT|wxALL</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_op">
+														<label>Operator:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALIGN_LEFT|wxALL</flag>
+													<border>5</border>
+													<object class="wxTextCtrl" name="txt_op">
+														<value></value>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL|wxALIGN_RIGHT</flag>
+													<border>5</border>
+													<object class="wxStaticText" name="lbl_stacol">
+														<label>Station Color:</label>
+														<wrap>-1</wrap>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxComboBox" name="cb_stacol">
+														<value>WHITE</value>
+														<content>
+															<item>RED</item>
+															<item>GREEN</item>
+															<item>BLUE</item>
+															<item>CYAN</item>
+															<item>MAGENTA</item>
+															<item>YELLOW</item>
+															<item>WHITE</item>
+														</content>
+													</object>
+												</object>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALIGN_CENTER_HORIZONTAL</flag>
+											<border>5</border>
+											<object class="wxBoxSizer">
+												<orient>wxHORIZONTAL</orient>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxButton" name="btn_clear_wo_data">
+														<label>Clear</label>
+														<default>0</default>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxButton" name="btn_undo_wo_data">
+														<label>Undo All</label>
+														<default>0</default>
+													</object>
+												</object>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL</flag>
+													<border>5</border>
+													<object class="wxButton" name="btn_save_wo_data">
+														<label>Save</label>
+														<default>0</default>
+													</object>
+												</object>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="notebookpage">
+				<label>Configuration</label>
+				<selected>1</selected>
+				<object class="wxScrolledWindow" name="scrlwin_conf">
+					<style>wxHSCROLL|wxVSCROLL</style>
+					<scrollrate>5,5</scrollrate>
+					<object class="wxBoxSizer">
+						<orient>wxVERTICAL</orient>
+						<object class="sizeritem">
+							<option>0</option>
+							<flag>wxALL</flag>
+							<border>5</border>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>Morse Speed</label>
+								<object class="sizeritem">
+									<option>1</option>
+									<flag>wxEXPAND</flag>
+									<border>5</border>
+									<object class="wxFlexGridSizer">
+										<rows>2</rows>
+										<cols>2</cols>
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols></growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxComboBox" name="cb_wpm">
+												<style>wxCB_READONLY</style>
+												<value>3</value>
+												<content>
+													<item>5</item>
+													<item>6</item>
+													<item>7</item>
+													<item>8</item>
+													<item>9</item>
+													<item>10</item>
+													<item>11</item>
+													<item>12</item>
+													<item>13</item>
+													<item>14</item>
+													<item>15</item>
+													<item>16</item>
+													<item>17</item>
+													<item>18</item>
+													<item>19</item>
+													<item>20</item>
+													<item>21</item>
+													<item>22</item>
+													<item>23</item>
+													<item>24</item>
+													<item>25</item>
+													<item>26</item>
+													<item>27</item>
+													<item>28</item>
+													<item>29</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_wpm">
+												<label>Default Words per Minute</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxComboBox" name="cb_max_wpm">
+												<style>wxCB_READONLY</style>
+												<value>5</value>
+												<content>
+													<item>6</item>
+													<item>7</item>
+													<item>8</item>
+													<item>9</item>
+													<item>10</item>
+													<item>11</item>
+													<item>12</item>
+													<item>13</item>
+													<item>14</item>
+													<item>15</item>
+													<item>16</item>
+													<item>17</item>
+													<item>18</item>
+													<item>19</item>
+													<item>20</item>
+													<item>21</item>
+													<item>22</item>
+													<item>23</item>
+													<item>24</item>
+													<item>25</item>
+													<item>26</item>
+													<item>27</item>
+													<item>28</item>
+													<item>29</item>
+													<item>30</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_max_wpm">
+												<label>Maximum Words per Minute</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+						<object class="sizeritem">
+							<option>0</option>
+							<flag>wxALL</flag>
+							<border>5</border>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>Pin Configuration</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALL</flag>
+									<border>5</border>
+									<object class="wxRadioBox" name="radbox_lcd">
+										<style>wxRA_SPECIFY_COLS</style>
+										<label>LCD Bus (i2c)</label>
+										<selection>0</selection>
+										<content>
+											<item>i2c Bus 0 (Pins 27, 28)</item>
+											<item>i2c Bus 1 (Pins 3, 5)</item>
+										</content>
+										<dimension>1</dimension>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag></flag>
+									<border>5</border>
+									<object class="wxFlexGridSizer">
+										<rows>2</rows>
+										<cols>2</cols>
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols></growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxComboBox" name="cb_relay">
+												<style>wxCB_READONLY</style>
+												<value>BCM 01 (28)</value>
+												<content>
+													<item>BCM 01 (28)</item>
+													<item>BCM 02 (03)</item>
+													<item>BCM 03 (05)</item>
+													<item>BCM 04 (07)</item>
+													<item>BCM 05 (29)</item>
+													<item>BCM 06 (31)</item>
+													<item>BCM 07 (26)</item>
+													<item>BCM 08 (24)</item>
+													<item>BCM 09 (21)</item>
+													<item>BCM 10 (19)</item>
+													<item>BCM 11 (23)</item>
+													<item>BCM 12 (32)</item>
+													<item>BCM 13 (33)</item>
+													<item>BCM 14 (08)</item>
+													<item>BCM 15 (10)</item>
+													<item>BCM 16 (36)</item>
+													<item>BCM 17 (11)</item>
+													<item>BCM 18 (12)</item>
+													<item>BCM 19 (35)</item>
+													<item>BCM 20 (38)</item>
+													<item>BCM 21 (40)</item>
+													<item>BCM 22 (15)</item>
+													<item>BCM 23 (16)</item>
+													<item>BCM 24 (18)</item>
+													<item>BCM 25 (22)</item>
+													<item>BCM 26 (37)</item>
+													<item>BCM 27 (13)</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_relay">
+												<label>Relay Pin</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxComboBox" name="cb_pir">
+												<style>wxCB_READONLY</style>
+												<value>BCM 02 (03)</value>
+												<content>
+													<item>BCM 01 (28)</item>
+													<item>BCM 02 (03)</item>
+													<item>BCM 03 (05)</item>
+													<item>BCM 04 (07)</item>
+													<item>BCM 05 (29)</item>
+													<item>BCM 06 (31)</item>
+													<item>BCM 07 (26)</item>
+													<item>BCM 08 (24)</item>
+													<item>BCM 09 (21)</item>
+													<item>BCM 10 (19)</item>
+													<item>BCM 11 (23)</item>
+													<item>BCM 12 (32)</item>
+													<item>BCM 13 (33)</item>
+													<item>BCM 14 (08)</item>
+													<item>BCM 15 (10)</item>
+													<item>BCM 16 (36)</item>
+													<item>BCM 17 (11)</item>
+													<item>BCM 18 (12)</item>
+													<item>BCM 19 (35)</item>
+													<item>BCM 20 (38)</item>
+													<item>BCM 21 (40)</item>
+													<item>BCM 22 (15)</item>
+													<item>BCM 23 (16)</item>
+													<item>BCM 24 (18)</item>
+													<item>BCM 25 (22)</item>
+													<item>BCM 26 (37)</item>
+													<item>BCM 27 (13)</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_pir">
+												<label>PIR Motion Detector Pin</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+						<object class="sizeritem">
+							<option>1</option>
+							<flag>wxALL</flag>
+							<border>5</border>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>General Options</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag></flag>
+									<border>5</border>
+									<object class="wxFlexGridSizer">
+										<rows>3</rows>
+										<cols>2</cols>
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols></growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxCheckBox" name="chkb_speed">
+												<label>Enabled</label>
+												<checked>0</checked>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_speed">
+												<label>Speed Adjust using Left and Right Buttons on LCD Plate</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxComboBox" name="cb_color">
+												<style>wxCB_READONLY</style>
+												<value>Red</value>
+												<content>
+													<item>Red</item>
+													<item>Green</item>
+													<item>Blue</item>
+													<item>Yellow</item>
+													<item>Magenta</item>
+													<item>White</item>
+													<item>Cyan</item>
+												</content>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_color">
+												<label>LCD Display Color</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="txt_parasep">
+												<value></value>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<option>0</option>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="lbl_parasep">
+												<label>Paragraph Seperator shown on LCD During Display</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+		<object class="wxMenuBar" name="menubar">
+			<label></label>
+			<object class="wxMenu" name="menu_file">
+				<label>_File</label>
+				<object class="wxMenuItem" name="menuitem_new_wo">
+					<label>_New Workorder File\tCtrl-N</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitme_new_conf">
+					<label>N_ew Config File\tCtrl-E</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="menuitem_open_wo">
+					<label>_Open Workorder File...\tCtrl-O</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_open_conf">
+					<label>Open Config File...\tCtrl-F</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="menuitem_save_wo">
+					<label>Save Workorder File</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_save_conf">
+					<label>Save Config File</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_save_all">
+					<label>Save All</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="menuitem_save_wo_as">
+					<label>Save Workorder File As...</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_save_conf_as">
+					<label>Save Config File As...</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="menuitem_exit">
+					<label>_Quit\tAlt-F4</label>
+					<help></help>
+				</object>
+			</object>
+			<object class="wxMenu" name="menu_edit">
+				<label>_Edit</label>
+				<object class="wxMenuItem" name="menuitem_undo">
+					<label>Undo\tCtrl-Z</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_redo">
+					<label>Redo\tCtrl-Q</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="menuitem_cut">
+					<label>Cut\tCtrl-X</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_copy">
+					<label>Copy\tCtrl-C</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="menuitem_paste">
+					<label>Paste\tCtrl-P</label>
+					<help></help>
+				</object>
+			</object>
+			<object class="wxMenu" name="about">
+				<label>_About</label>
+				<object class="wxMenuItem" name="menuitem_about">
+					<label>About</label>
+					<help></help>
+				</object>
+			</object>
+		</object>
+		<object class="wxStatusBar" name="statusbar">
+			<style>wxST_SIZEGRIP</style>
+			<fields>1</fields>
+		</object>
+	</object>
+</resource>
