@@ -41,8 +41,12 @@
 >>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
 =======
       "morseversion": "AMERICAN",
+<<<<<<< HEAD
       "stationcolor": true
 >>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
+=======
+      "stationcolors": true
+>>>>>>> Minor logic change to trainorder and fixed tests.
     }
   ]
 }

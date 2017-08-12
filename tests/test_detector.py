@@ -6,8 +6,12 @@ Author : James L. Key
 """
 from unittest import TestCase
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from MorseAppData import MorseConfig
+=======
+from MorseAppData import MorseAppData
+>>>>>>> Minor logic change to trainorder and fixed tests.
 from RPiMorseDrv import Detector
 >>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
 
@@ -30,7 +34,7 @@ class TestDetector(TestCase):
 =======
         self._config_path = os.path.dirname(__file__)
         self._config_path = os.path.join(os.path.sep, self._config_path, '..', 'data', 'config.json')
-        self.config = MorseConfig(configpath=self._config_path)
+        self.config = MorseAppData(configpath=self._config_path)
         self.config.getconfig()
         self.pin = self.config.motion_det_pin
         self.det = Detector(self.pin)

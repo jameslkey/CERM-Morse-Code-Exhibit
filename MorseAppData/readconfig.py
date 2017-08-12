@@ -115,4 +115,4 @@ class MorseConfig:
         self.speed_adjust = bool(self._configdata.general[0].speedadjustbuttonsenabled)
         self._color_str = str(self._configdata.general[0].color)
         self.paragraph_sep = str(self._configdata.general[0].paragraphsep)
-        self.station_color_enabled = bool(self._configdata.general[0].stationcolor)
+        self.station_color_enabled = bool(self._configdata.general[0].stationcolors)

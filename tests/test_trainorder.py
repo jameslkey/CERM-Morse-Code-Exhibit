@@ -15,6 +15,7 @@ Comments go here!!!
 
 from MorseAppData import MorseAppData
 from unittest import TestCase
+from random import randrange
 import os
 
 
@@ -27,7 +28,13 @@ class TestTrainorder(TestCase):
         self.trainorder.gettrainorder()
 
     def test_gettrainorder(self):
-        self.fail()
+        """
+
+        .. todo:: WRITE A REAL TEST
+
+        """
+        self.trainorder.gettrainorder(toid=randrange(1, self.trainorder.numtrainorders()))
 
     def test_numtrainorders(self):
-        self.fail()
+        self.assertGreaterEqual(self.trainorder.numtrainorders(), 1,
+                                'Train Order Number not positive and greater than zero!')

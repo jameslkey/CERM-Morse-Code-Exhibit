@@ -71,11 +71,10 @@ class Trainorder:
         :param toid:
 
         """
-        if toid <= 0:
+        if toid < 1:
             raise TrainorderEx('Train Order Number must be Greater than zero')
         if toid > self.numtrainorders():
             raise TrainorderEx('Train Order Does not exist in file or file is improperly formatted')
-        toid += 1
         self.trnordnum = str(self._todata.trainorder[toid].trnordnum)
         self.locissued = str(self._todata.trainorder[toid].locissued)
         self.date = str(self._todata.trainorder[toid].date)
