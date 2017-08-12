@@ -75,4 +75,4 @@ class PlayMorse:
             elif element == 'G':
                 relay.pause(self.lettergap)
             else:
-                relay.pause(self.wordgap)
+                relay.pause(self.sentencegap)  # Ignore other elements
