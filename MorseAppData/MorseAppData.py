@@ -13,9 +13,10 @@
 
 from .readconfig import MorseConfig
 from .trainorder import Trainorder
+from .buildfiles import BuildFiles
 
 
-class MorseAppData(MorseConfig, Trainorder):
+class MorseAppData(MorseConfig, Trainorder, BuildFiles):
     """
     .. todo:: create option to build new default config data file
 
@@ -23,6 +24,8 @@ class MorseAppData(MorseConfig, Trainorder):
     def __init__(self, configpath: str = '', trainorderpath: str = ''):
         MorseConfig.__init__(self, configpath)
         Trainorder.__init__(self, trainorderpath)
+        BuildFiles.__init__(self, config_path=configpath, trainorder_path=trainorderpath)
+
         self.getconfig()
         self.gettrainorder()
 

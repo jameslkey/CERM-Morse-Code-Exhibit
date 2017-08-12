@@ -13,6 +13,7 @@ Comments go here!!!
 
 .. py:currentmodule:: MorseAppData
 
+
 """
 
 import json
@@ -29,7 +30,6 @@ except ImportError:
 
 class MorseConfig:
     # pylint: disable=R0902
-
     r"""
     Simply loads config data from a json file and into a class that can be accessed
     by the calling application. Specifically designed for CERMMorse program. It has little to
@@ -67,8 +67,7 @@ class MorseConfig:
         self.color = [55, 55, 55]  # set stupid value so it fails its 'get' doesn't work
         self.paragraph_sep = 'XXX'
         self.station_color = False
-        # Initialize data
-        # self.getconfig()  # get values
+
 
     @property
     def config_path(self) -> str:
@@ -86,8 +85,7 @@ class MorseConfig:
     @config_path.setter
     def config_path(self, configpath: str):
         r"""
-        Setter method for _config_path
-
+        Setter method for config_path
 
         """
         self._config_path = configpath
@@ -102,6 +100,7 @@ class MorseConfig:
     def readconfig(self):
         r"""
         Optional method to load the config data into the data again.
+
         This happens on init of the class, but can be used to load changes,
         if the config file is changed.
 
