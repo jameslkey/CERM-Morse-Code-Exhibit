@@ -31,7 +31,7 @@ except ImportError:
     FrozenJSON = sys.modules[__package__ + '.FrozenJSON']
 
 
-class Workorder:
+class Trainorder:
     r"""
 
 
@@ -53,16 +53,16 @@ class Workorder:
         with codecs.open(j_s_o_n, 'r', encoding='utf-8') as f:  # Needs encoding to force raspbian to read correctly
             self._rawwodata = json.load(f)
         self._wodata = FrozenJSON(self._rawwodata)
-        self.TONum = 0
-        self.LocIssued = ''
-        self.Date = ''
-        self.To = ''
-        self.At = ''
-        self.Text = ''
-        self.Status = 0
-        self.Time = 0
-        self.Dispatcher = ''
-        self.Operator = ''
+        self.trnordnum = 0
+        self.locissued = ''
+        self.date = ''
+        self.to = ''
+        self.at = ''
+        self.text = ''
+        self.status = 0
+        self.time = 0
+        self.dispatcher = ''
+        self.operator = ''
 
     def getworkorder(self, woid:  int = 1):
         if woid <= 0:
@@ -70,16 +70,16 @@ class Workorder:
         if woid > self.numworkorders():
             raise WorkorderEx('Work Order Does not exist in file or file is improperly formatted')
         woid += 1
-        self.TONum = str(self._wodata.WorkOrder[woid].TONum)
-        self.LocIssued = str(self._wodata.WorkOrder[woid].LocIssued)
-        self.Date = str(self._wodata.WorkOrder[woid].Date)
-        self.To = str(self._wodata.WorkOrder[woid].To)
-        self.At = str(self._wodata.WorkOrder[woid].At)
-        self.Text = str(self._wodata.WorkOrder[woid].Text)
-        self.Status = str(self._wodata.WorkOrder[woid].Status)
-        self.Time = str(self._wodata.WorkOrder[woid].Time)
-        self.Dispatcher = str(self._wodata.WorkOrder[woid].Dispatcher)
-        self.Operator = str(self._wodata.WorkOrder[woid].Operator)
+        self.trnordnum = str(self._wodata.WorkOrder[woid].TONum)
+        self.locissued = str(self._wodata.WorkOrder[woid].LocIssued)
+        self.date = str(self._wodata.WorkOrder[woid].Date)
+        self.to = str(self._wodata.WorkOrder[woid].To)
+        self.at = str(self._wodata.WorkOrder[woid].At)
+        self.text = str(self._wodata.WorkOrder[woid].Text)
+        self.status = str(self._wodata.WorkOrder[woid].Status)
+        self.time = str(self._wodata.WorkOrder[woid].Time)
+        self.dispatcher = str(self._wodata.WorkOrder[woid].Dispatcher)
+        self.operator = str(self._wodata.WorkOrder[woid].Operator)
         self._station_color = str(self._wodata.WorkOrder[woid].StationColor)
 
     def numworkorders(self) -> int:

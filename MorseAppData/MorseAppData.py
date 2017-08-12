@@ -12,7 +12,7 @@
 """
 
 from .readconfig import MorseConfig as MorseConfig
-from .workorder import Workorder as WorkOrder
+from .trainorder import Trainorder as WorkOrder
 
 
 class MorseAppData(MorseConfig, WorkOrder):
