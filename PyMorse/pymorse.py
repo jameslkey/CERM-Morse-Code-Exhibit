@@ -189,9 +189,8 @@ class Morse:
         stream = list(code)
         if stream == '':
             return ''
-        if stream:
-            if stream[-1] != "~":  # ~ is used as the marker between words
-                stream.append("~")
+        if stream and stream[-1] != "~":  # ~ is used as the marker between words
+            stream.append("~")
         code = ''.join(stream)
         if position_in_string < len(code):
             morse_letter = ""
