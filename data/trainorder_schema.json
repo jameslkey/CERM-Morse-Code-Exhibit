@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {},
+    "id": "http://example.com/example.json",
+    "properties": {
+        "trainorder": {
+            "id": "/properties/trainorder",
+            "items": {
+                "id": "/properties/trainorder/items",
+                "properties": {
+                    "at": {
+                        "description": "Location train occurs",
+                        "id": "/properties/trainorder/items/properties/at",
+                        "title": "At",
+                        "type": "string"
+                    },
+                    "date": {
+                        "description": "Date of the train order",
+                        "id": "/properties/trainorder/items/properties/date",
+                        "title": "Date",
+                        "type": "string"
+                    },
+                    "dispatcher": {
+                        "description": "Dispatcher Name",
+                        "id": "/properties/trainorder/items/properties/dispatcher",
+                        "title": "Dispatcher Name",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "System number for ID, must be unique",
+                        "id": "/properties/trainorder/items/properties/id",
+                        "title": "Train order ID",
+                        "type": "integer"
+                    },
+                    "locissued": {
+                        "description": "Location where the train order was issued from",
+                        "id": "/properties/trainorder/items/properties/locissued",
+                        "title": "Location Issued",
+                        "type": "string"
+                    },
+                    "operator": {
+                        "description": "Name of sending Morse operator",
+                        "id": "/properties/trainorder/items/properties/operator",
+                        "title": "Operator Name",
+                        "type": "string"
+                    },
+                    "stationcolor": {
+                        "description": "Color to display when the train order plays. Used to differentiate sending stations, for ex. upstream, downstream",
+                        "id": "/properties/trainorder/items/properties/stationcolor",
+                        "title": "Station Color",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status of the trainorder",
+                        "id": "/properties/trainorder/items/properties/status",
+                        "pattern": "MadeComplete|Fulfilled|Superseded|Annulled",
+                        "title": "Status",
+                        "type": "string"
+                    },
+                    "trnordnum": {
+                        "description": "Train Order Number",
+                        "id": "/properties/trainorder/items/properties/trnordnum",
+                        "title": "Train Order Number",
+                        "type": "integer"
+                    },
+                    "message": {
+                        "description": "The actual message in the train order",
+                        "id": "/properties/trainorder/items/properties/message",
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "time": {
+                        "description": "Time train order written",
+                        "id": "/properties/trainorder/items/properties/time",
+                        "title": "Time",
+                        "type": "string"
+                    },
+                    "to": {
+                        "description": "Train to receive the train order",
+                        "id": "/properties/trainorder/items/properties/to",
+                        "title": "To train name and number",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "locissued",
+                    "status",
+                    "message",
+                    "dispatcher",
+                    "date",
+                    "to",
+                    "at",
+                    "stationcolor",
+                    "time",
+                    "trnordnum",
+                    "id",
+                    "operator"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "trainorder"
+    ],
+    "type": "object"
+}

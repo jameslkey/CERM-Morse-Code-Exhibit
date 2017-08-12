@@ -48,12 +48,14 @@ class BaseFrame(wx.Frame):
 
         self.btn_add_wo = wx.Button(statb_wo_list_outer.GetStaticBox(), wx.ID_ADD, u"Add Workorder", wx.DefaultPosition,
                                     wx.DefaultSize, 0)
+        self.btn_add_wo.SetToolTipString(u"Add new workorder")
         self.btn_add_wo.SetMinSize(wx.Size(115, -1))
 
         bs_wo_btns.Add(self.btn_add_wo, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
         self.btn_delete_wo = wx.Button(statb_wo_list_outer.GetStaticBox(), wx.ID_DELETE, u"Delete Workorder",
                                        wx.DefaultPosition, wx.DefaultSize, 0)
+        self.btn_delete_wo.SetToolTipString(u"Delete selected workorder")
         self.btn_delete_wo.SetMinSize(wx.Size(115, -1))
 
         bs_wo_btns.Add(self.btn_delete_wo, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
@@ -64,6 +66,8 @@ class BaseFrame(wx.Frame):
         self.pnl_wo_left.Layout()
         statb_wo_list_outer.Fit(self.pnl_wo_left)
         self.pnl_wo_right = wx.Panel(self.spliter_wo, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.pnl_wo_right.SetToolTipString(u"Clear workorder data")
+
         statb_wo_data_outer = wx.StaticBoxSizer(wx.StaticBox(self.pnl_wo_right, wx.ID_ANY, u"Selected Workorder"),
                                                 wx.VERTICAL)
 
@@ -76,14 +80,15 @@ class BaseFrame(wx.Frame):
         self.lbl_wo_id.Wrap(-1)
         fgs_wo_data_inner.Add(self.lbl_wo_id, 0, wx.ALIGN_RIGHT | wx.ALL, 5)
 
-        self.lbl_wo_id_disp = wx.StaticText(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"MyLabel",
-                                            wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_wo_id_disp.Wrap(-1)
-        self.lbl_wo_id_disp.SetFont(
+        self.txt_wo_id = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"001", wx.DefaultPosition,
+                                     wx.DefaultSize, wx.TE_READONLY)
+        self.txt_wo_id.SetMaxLength(4)
+        self.txt_wo_id.SetFont(
             wx.Font(wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD,
                     False, wx.EmptyString))
+        self.txt_wo_id.SetToolTipString(u"Current Workorder ID")
 
-        fgs_wo_data_inner.Add(self.lbl_wo_id_disp, 0, wx.ALIGN_LEFT | wx.ALL, 5)
+        fgs_wo_data_inner.Add(self.txt_wo_id, 0, wx.ALL, 5)
 
         self.lbl_to_num = wx.StaticText(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"Train Order #:",
                                         wx.DefaultPosition, wx.DefaultSize, 0)
@@ -92,6 +97,8 @@ class BaseFrame(wx.Frame):
 
         self.txt_to_num = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                       wx.DefaultSize, 0)
+        self.txt_to_num.SetToolTipString(u"Number recorded on workorder slip")
+
         fgs_wo_data_inner.Add(self.txt_to_num, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         self.lbl_loc = wx.StaticText(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"Location Issued:",
@@ -101,6 +108,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_loc = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                    wx.DefaultSize, 0)
+        self.txt_loc.SetToolTipString(u"where the workorder was issued")
         self.txt_loc.SetMinSize(wx.Size(300, -1))
 
         fgs_wo_data_inner.Add(self.txt_loc, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -121,6 +129,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_to = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
+        self.txt_to.SetToolTipString(u"Train to complete workorder")
         self.txt_to.SetMinSize(wx.Size(300, -1))
 
         fgs_wo_data_inner.Add(self.txt_to, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -132,6 +141,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_at = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
+        self.txt_at.SetToolTipString(u"Where the order is to occur")
         self.txt_at.SetMinSize(wx.Size(300, -1))
 
         fgs_wo_data_inner.Add(self.txt_at, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -143,6 +153,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_text = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                     wx.DefaultSize, wx.HSCROLL | wx.TE_MULTILINE)
+        self.txt_text.SetToolTipString(u"Order details")
         self.txt_text.SetMinSize(wx.Size(300, 100))
 
         fgs_wo_data_inner.Add(self.txt_text, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -156,6 +167,8 @@ class BaseFrame(wx.Frame):
         self.cb_status = wx.ComboBox(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"Made Complete",
                                      wx.DefaultPosition, wx.DefaultSize, cb_statusChoices, 0)
         self.cb_status.SetSelection(0)
+        self.cb_status.SetToolTipString(u"Workorder status")
+
         fgs_wo_data_inner.Add(self.cb_status, 0, wx.ALL, 5)
 
         self.lbl_time = wx.StaticText(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"Time:", wx.DefaultPosition,
@@ -165,6 +178,8 @@ class BaseFrame(wx.Frame):
 
         self.tp_time = wx.DatePickerCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.DefaultDateTime,
                                          wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT)
+        self.tp_time.SetToolTipString(u"Time workorder was issued")
+
         fgs_wo_data_inner.Add(self.tp_time, 0, wx.ALL, 5)
 
         self.lbl_disp = wx.StaticText(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"Dispatcher:", wx.DefaultPosition,
@@ -174,6 +189,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_disp = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                     wx.DefaultSize, 0)
+        self.txt_disp.SetToolTipString(u"Name of dispatcher")
         self.txt_disp.SetMinSize(wx.Size(300, -1))
 
         fgs_wo_data_inner.Add(self.txt_disp, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -185,6 +201,7 @@ class BaseFrame(wx.Frame):
 
         self.txt_op = wx.TextCtrl(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
+        self.txt_op.SetToolTipString(u"Name of morse operator")
         self.txt_op.SetMinSize(wx.Size(300, -1))
 
         fgs_wo_data_inner.Add(self.txt_op, 0, wx.ALIGN_LEFT | wx.ALL, 5)
@@ -197,6 +214,8 @@ class BaseFrame(wx.Frame):
         cb_stacolChoices = [u"RED", u"GREEN", u"BLUE", u"CYAN", u"MAGENTA", u"YELLOW", u"WHITE"]
         self.cb_stacol = wx.ComboBox(statb_wo_data_outer.GetStaticBox(), wx.ID_ANY, u"WHITE", wx.DefaultPosition,
                                      wx.DefaultSize, cb_stacolChoices, 0)
+        self.cb_stacol.SetToolTipString(u"Color option for display during this workorder ")
+
         fgs_wo_data_inner.Add(self.cb_stacol, 0, wx.ALL, 5)
 
         statb_wo_data_outer.Add(fgs_wo_data_inner, 1, wx.EXPAND, 5)
@@ -209,10 +228,14 @@ class BaseFrame(wx.Frame):
 
         self.btn_undo_wo_data = wx.Button(statb_wo_data_outer.GetStaticBox(), wx.ID_UNDO, u"Undo All",
                                           wx.DefaultPosition, wx.DefaultSize, 0)
+        self.btn_undo_wo_data.SetToolTipString(u"Undo changes")
+
         bs_wo_btns.Add(self.btn_undo_wo_data, 0, wx.ALL, 5)
 
         self.btn_save_wo_data = wx.Button(statb_wo_data_outer.GetStaticBox(), wx.ID_SAVE, u"Save", wx.DefaultPosition,
                                           wx.DefaultSize, 0)
+        self.btn_save_wo_data.SetToolTipString(u"Save changes")
+
         bs_wo_btns.Add(self.btn_save_wo_data, 0, wx.ALL, 5)
 
         statb_wo_data_outer.Add(bs_wo_btns, 0, wx.ALIGN_CENTER_HORIZONTAL, 5)

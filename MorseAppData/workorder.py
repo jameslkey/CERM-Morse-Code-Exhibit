@@ -46,7 +46,7 @@ class Workorder:
             wopath = os.path.dirname(os.getcwd())
             wopath = os.path.join(wopath, 'CERMMorse')
             wopath = os.path.join(wopath, 'data')
-            wopath = os.path.join(wopath, 'work_orders.json')
+            wopath = os.path.join(wopath, 'train_orders.json')
         j_s_o_n = os.path.normpath(wopath)
         if not os.path.exists(j_s_o_n):
             raise WorkorderEx('Work Order File {} does not exists'.format(j_s_o_n))

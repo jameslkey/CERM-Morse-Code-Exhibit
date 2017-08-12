@@ -33,3 +33,7 @@ class Events:
         dlg.ShowModal()
         if dlg.ShowModal == wx.ID_OK:
             dlg.Destroy()
+
+    def splitter_wo_on_idle(self, event):
+        self.gui.SetSashPosition(135)
+        self.gui.Unbind(wx.EVT_IDLE)

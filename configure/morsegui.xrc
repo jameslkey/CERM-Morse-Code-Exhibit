@@ -54,6 +54,7 @@
 													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL</flag>
 													<border>5</border>
 													<object class="wxButton" name="btn_add_wo">
+														<tooltip>Add new workorder</tooltip>
 														<label>Add Workorder</label>
 														<default>0</default>
 													</object>
@@ -63,6 +64,7 @@
 													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL</flag>
 													<border>5</border>
 													<object class="wxButton" name="btn_delete_wo">
+														<tooltip>Delete selected workorder</tooltip>
 														<label>Delete Workorder</label>
 														<default>0</default>
 													</object>
@@ -73,6 +75,7 @@
 								</object>
 								<object class="wxPanel" name="pnl_wo_right">
 									<style>wxTAB_TRAVERSAL</style>
+									<tooltip>Clear workorder data</tooltip>
 									<object class="wxStaticBoxSizer">
 										<orient>wxVERTICAL</orient>
 										<label>Selected Workorder</label>
@@ -98,16 +101,18 @@
 												</object>
 												<object class="sizeritem">
 													<option>0</option>
-													<flag>wxALIGN_LEFT|wxALL</flag>
+													<flag>wxALL</flag>
 													<border>5</border>
-													<object class="wxStaticText" name="lbl_wo_id_disp">
+													<object class="wxTextCtrl" name="txt_wo_id">
+														<style>wxTE_READONLY</style>
 														<font>
 															<style>normal</style>
 															<weight>bold</weight>
 															<underlined>0</underlined>
 														</font>
-														<label>MyLabel</label>
-														<wrap>-1</wrap>
+														<tooltip>Current Workorder ID</tooltip>
+														<value>001</value>
+														<maxlength>4</maxlength>
 													</object>
 												</object>
 												<object class="sizeritem">
@@ -124,6 +129,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_to_num">
+														<tooltip>Number recorded on workorder slip</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -141,6 +147,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_loc">
+														<tooltip>where the workorder was issued</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -175,6 +182,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_to">
+														<tooltip>Train to complete workorder</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -192,6 +200,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_at">
+														<tooltip>Where the order is to occur</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -210,6 +219,7 @@
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_text">
 														<style>wxHSCROLL|wxTE_MULTILINE</style>
+														<tooltip>Order details</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -227,6 +237,7 @@
 													<flag>wxALL</flag>
 													<border>5</border>
 													<object class="wxComboBox" name="cb_status">
+														<tooltip>Workorder status</tooltip>
 														<value>Made Complete</value>
 														<content>
 															<item>Made Complete</item>
@@ -251,6 +262,7 @@
 													<border>5</border>
 													<object class="wxDatePickerCtrl" name="tp_time">
 														<style>wxDP_DEFAULT</style>
+														<tooltip>Time workorder was issued</tooltip>
 													</object>
 												</object>
 												<object class="sizeritem">
@@ -267,6 +279,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_disp">
+														<tooltip>Name of dispatcher</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -284,6 +297,7 @@
 													<flag>wxALIGN_LEFT|wxALL</flag>
 													<border>5</border>
 													<object class="wxTextCtrl" name="txt_op">
+														<tooltip>Name of morse operator</tooltip>
 														<value></value>
 													</object>
 												</object>
@@ -301,6 +315,7 @@
 													<flag>wxALL</flag>
 													<border>5</border>
 													<object class="wxComboBox" name="cb_stacol">
+														<tooltip>Color option for display during this workorder </tooltip>
 														<value>WHITE</value>
 														<content>
 															<item>RED</item>
@@ -335,6 +350,7 @@
 													<flag>wxALL</flag>
 													<border>5</border>
 													<object class="wxButton" name="btn_undo_wo_data">
+														<tooltip>Undo changes</tooltip>
 														<label>Undo All</label>
 														<default>0</default>
 													</object>
@@ -344,6 +360,7 @@
 													<flag>wxALL</flag>
 													<border>5</border>
 													<object class="wxButton" name="btn_save_wo_data">
+														<tooltip>Save changes</tooltip>
 														<label>Save</label>
 														<default>0</default>
 													</object>

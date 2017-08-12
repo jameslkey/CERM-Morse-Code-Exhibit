@@ -39,13 +39,13 @@ class LcdScroll:
 
     """
 
-    def __init__(self, lcd):
+    def __init__(self, lcd, cols: int=16, lines: int=2):
         #: Adafruit CharLCD Object
-        self.lcd = Lcd.Adafruit_CharLCDPlate()
-        # .. todo:: remove this fake assignment of Lcd.Adafruit...
-        # self.lcd = lcd
+        if not isinstance(lcd, Lcd.Adafruit_CharLCDPlate):
+            self.lcd = Lcd.Adafruit_CharLCDPlate(cols=cols, lines=lines)
+
         #: Tuple containing display and init to common values
-        self._display_size = (16, 2)
+        self._display_size = (cols, lines)
         #: Internal Message to send
         self._message = ''
         #: Internal dictionary of special characters
@@ -239,6 +239,16 @@ class LcdScroll:
         for row in range(0, rows - 1):
             self._screen_buffer[row] = ''
 
+        def scroll_up():
+            screen_buffer = []
+            if rows > 0:
+                for row in range(1, rows - 1):
+                    screen_buffer[row - 1] = self._screen_buffer[row]
+                for row in range(0, rows - 1):
+                    self.lcd.set_cursor(0, row)
+                    self.lcd.message(self._screen_buffer[row])
+
+
         # break into words
         local_message = self.message.split(' ')
 
@@ -250,12 +260,7 @@ class LcdScroll:
                     # calculate if there is room on the line if not move text up
                     if len(word) > self._remaining_line_buffer:
                         self.lcd.clear()
-                        if rows > 0:
-                            for row in range(rows - 1, 0, -1):
-                                self._screen_buffer[row - 1] = self._screen_buffer[row]
-                            for row in range(0, rows - 1):
-                                self.lcd.message(self._screen_buffer[row])
-                                self.lcd.set_cursor(0, row)
+                        scroll_up()
                         self._remaining_line_buffer = columns
                         # === logic sounds good until here
                     if self.display_cursor:

@@ -1,31 +1,43 @@
 {
-  "Constants": [
+  "constants": [
     {
+<<<<<<< HEAD
       "DefaultWPM": 18,
       "MaxWPM": 25
+=======
+      "defaultwpm": 13,
+      "maxwpm": 25
+>>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
     }
   ],
-  "LCDPins": [
+  "lcdpins": [
     {
-      "Pin1": 2,
-      "Pin2": 3
+      "pin1": 2,
+      "pin2": 3
     }
   ],
-  "RelayPin": [
+  "relaypin": [
     {
-      "Pin": 26
+      "pin": 26
     }
   ],
-  "MotionDetectorPin": [
+  "motiondetectorpin": [
     {
-      "Pin": 20
+      "pin": 20
     }
   ],
-  "General": [
+  "general": [
     {
+<<<<<<< HEAD
       "SpeedAdjustButtonsEnabled": true,
       "Color": "MAGENTA",
       "ParagraphSep": "\u00B6"
+=======
+      "speedadjustbuttonsenabled": true,
+      "color": "MAGENTA",
+      "paragraphsep": "\u00B6",
+      "morseversion": "AMERICAN"
+>>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
     }
   ]
 }

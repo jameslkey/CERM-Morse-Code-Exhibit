@@ -2,7 +2,7 @@
 """
 Comments go here!!!
 
-Parsing Control for Adafruit_CharLCD in CERMMorse.
+.. todo:: create option to build new default config data file
 
 :program: CERMMorse
 :file: readonfig
@@ -17,6 +17,7 @@ Parsing Control for Adafruit_CharLCD in CERMMorse.
 
 import json
 import os
+from .buildfiles import BuildFiles
 
 try:
     from FrozenJSON import FrozenJSON
@@ -34,7 +35,7 @@ class MorseConfig:
     by the calling application. Specifically designed for CERMMorse program. It has little to
     no exception handling at present.
 
-    .. todo:: create option to build new default config data file
+    .. todo:: NEED TO REFACTOR CONNECTION TO JSON FILES
 
     :param configpath:
 
@@ -43,7 +44,7 @@ class MorseConfig:
         self._config_path = configpath
         if self._config_path == '':
             loc_path = os.path.dirname(__file__)
-            self._config_path = os.path.join(os.path.sep, loc_path, '..', '..', 'data', 'config.json')
+            self._config_path = os.path.join(os.path.sep, loc_path, '..', 'data', 'config.json')
         j_s_o_n = os.path.normpath(self._config_path)
 
         if not os.path.exists(j_s_o_n):
@@ -76,6 +77,8 @@ class MorseConfig:
         :getter: Get MorseConfig.config_path property
         :setter (String): Set MorseConfig.config_path property - Allows changing the file path
 
+        .. todo:: Implement file access as try
+
         """
         return self._config_path
 
@@ -84,13 +87,17 @@ class MorseConfig:
         r"""
         Setter method for _config_path
 
+
         """
         self._config_path = configpath
         if self._config_path == '':
-            self._config_path = os.path.dirname(os.getcwd())
-            self._config_path = os.path.join(self._config_path, 'CERMMorse')
-            self._config_path = os.path.join(self._config_path, 'data')
-            self._config_path = os.path.join(self._config_path, 'config.json')
+            loc_path = os.path.dirname(__file__)
+            self._config_path = os.path.join(os.path.sep, loc_path, '..', 'data')
+        self._config_path = os.path.normpath(self._config_path)
+        if not os.path.exists(self._config_path):
+            buildfiles = BuildFiles(config_path=self._config_path)
+            buildfiles.build_config_file()
+
 
     def getconfig(self):
         r"""

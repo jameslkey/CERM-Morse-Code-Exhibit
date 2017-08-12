@@ -3,22 +3,22 @@
     "definitions": {},
     "id": "http://example.com/example.json",
     "properties": {
-        "Constants": {
-            "id": "/properties/Constants",
+        "constants": {
+            "id": "/properties/constants",
             "items": {
-                "id": "/properties/Constants/items",
+                "id": "/properties/constants/items",
                 "properties": {
-                    "DefaultWPM": {
+                    "defaultwpm": {
                         "description": "Default Words per Minute",
-                        "id": "/properties/Constants/items/properties/DefaultWPM",
+                        "id": "/properties/constants/items/properties/defaultwpm",
                         "maximum": 29,
                         "minimum": 3,
                         "title": "Default Words per Minute",
                         "type": "integer"
                     },
-                    "MaxWPM": {
+                    "maxwpm": {
                         "description": "Max Words per Minute",
-                        "id": "/properties/Constants/items/properties/MaxWPM",
+                        "id": "/properties/constants/items/properties/maxwpm",
                         "maximum": 30,
                         "minimum": 5,
                         "title": "Max Words per Minute",
@@ -26,78 +26,78 @@
                     }
                 },
                 "required": [
-                    "MaxWPM",
-                    "DefaultWPM"
+                    "maxwpm",
+                    "defaultwpm"
                 ],
                 "type": "object"
             },
             "type": "array"
         },
-        "General": {
-            "id": "/properties/General",
+        "general": {
+            "id": "/properties/general",
             "items": {
-                "id": "/properties/General/items",
+                "id": "/properties/general/items",
                 "properties": {
-                    "Color": {
+                    "color": {
                         "description": "LCD Display Color ",
-                        "id": "/properties/General/items/properties/Color",
+                        "id": "/properties/general/items/properties/color",
                         "pattern": "WHITE|BLUE|RED|GREEN|YELLOW|CYAN|MAGENTA",
                         "title": "LCD Display Color",
                         "type": "string"
                     },
-                    "MorseVersion": {
+                    "morseversion": {
                         "description": "Version of Morse code to use",
-                        "id": "/properties/General/items/properties/MorseVersion",
+                        "id": "/properties/general/items/properties/morseversion",
                         "pattern": "AMERICAN|INTERNATIONAL",
                         "title": "Morse Version",
                         "type": "string"
                     },
-                    "ParagraphSep": {
+                    "paragraphsep": {
                         "description": "Character displayed when the end of paragraph \"code\" is played",
-                        "id": "/properties/General/items/properties/ParagraphSep",
+                        "id": "/properties/general/items/properties/paragraphsep",
                         "title": "Paragraph Separator",
                         "type": "string"
                     },
-                    "SpeedAdjustButtonsEnabled": {
+                    "speedadjustbuttonsenabled": {
                         "description": "Set to true to enable buttons on the LCD Plate for speed change",
-                        "id": "/properties/General/items/properties/SpeedAdjustButtonsEnabled",
+                        "id": "/properties/general/items/properties/speedadjustbuttonsenabled",
                         "title": "Speed Adjust Buttons Enabled",
                         "type": "boolean"
                     },
-                    "StationColors": {
+                    "stationcolors": {
                         "description": "Set to true to enable per station display colors",
-                        "id": "/properties/General/items/properties/StationColors",
+                        "id": "/properties/general/items/properties/stationcolors",
                         "title": "Per Station Colors Enabled",
                         "type": "boolean"
                     }
                 },
                 "required": [
-                    "Color",
-                    "ParagraphSep",
-                    "MorseVersion",
-                    "SpeedAdjustButtonsEnabled",
-                    "StationColors"
+                    "color",
+                    "paragraphsep",
+                    "morseversion",
+                    "speedadjustbuttonsenabled",
+                    "stationcolors"
                 ],
                 "type": "object"
             },
             "type": "array"
         },
-        "LCDPins": {
-            "id": "/properties/LCDPins",
+        "lcdpins": {
+            "id": "/properties/lcdpins",
             "items": {
-                "id": "/properties/LCDPins/items",
+                "id": "/properties/lcdpins/items",
                 "properties": {
-                    "Pin1": {
+                    "pin1": {
                         "description": "LCD I2C Plate connection for Pin2",
-                        "id": "/properties/LCDPins/items/properties/Pin1",
+                        "id": "/properties/lcdpins/items/properties/pin1",
                         "maximum": 3,
                         "minimum": 0,
-                        "title": "GPIO (BCM#) connection LCD I2C pin2",
+                        "title": "GPIO (BCM#) connection LCD I2C Pin2",
                         "type": "integer"
                     },
-                    "Pin2": {
-                        "description": "LCD I2C Plate connection for Pin1",
-                        "id": "/properties/LCDPins/items/properties/Pin2",
+                    "pin2": {
+                        "description": "LCD I2C Plate connection for pin1",
+                        "id": "/properties/lcdpins/items/properties/pin2",
                         "maximum": 3,
                         "minimum": 0,
                         "title": "GPIO (BCM#) connection LCD I2C pin1",
@@ -105,21 +105,21 @@
                     }
                 },
                 "required": [
-                    "Pin2",
-                    "Pin1"
+                    "pin2",
+                    "pin1"
                 ],
                 "type": "object"
             },
             "type": "array"
         },
-        "MotionDetectorPin": {
-            "id": "/properties/MotionDetectorPin",
+        "motiondetectorpin": {
+            "id": "/properties/motiondetectorpin",
             "items": {
-                "id": "/properties/MotionDetectorPin/items",
+                "id": "/properties/motiondetectorpin/items",
                 "properties": {
-                    "Pin": {
+                    "pin": {
                         "description": "GPIO (BCM) Motion Detector pin",
-                        "id": "/properties/MotionDetectorPin/items/properties/Pin",
+                        "id": "/properties/motiondetectorpin/items/properties/pin",
                         "maximum": 27,
                         "minimum": 0,
                         "title": "GPIO (BCM) connection pin for PIR Motion Detector",
@@ -127,20 +127,20 @@
                     }
                 },
                 "required": [
-                    "Pin"
+                    "pin"
                 ],
                 "type": "object"
             },
             "type": "array"
         },
-        "RelayPin": {
-            "id": "/properties/RelayPin",
+        "relaypin": {
+            "id": "/properties/relaypin",
             "items": {
-                "id": "/properties/RelayPin/items",
+                "id": "/properties/relaypin/items",
                 "properties": {
-                    "Pin": {
+                    "pin": {
                         "description": "GPIO (BCM) connection pin for Relay",
-                        "id": "/properties/RelayPin/items/properties/Pin",
+                        "id": "/properties/relaypin/items/properties/pin",
                         "maximum": 27,
                         "minimum": 0,
                         "title": "GPIO (BCM) Relay pin",
@@ -148,7 +148,7 @@
                     }
                 },
                 "required": [
-                    "Pin"
+                    "pin"
                 ],
                 "type": "object"
             },
@@ -156,11 +156,11 @@
         }
     },
     "required": [
-        "RelayPin",
-        "MotionDetectorPin",
-        "LCDPins",
-        "Constants",
-        "General"
+        "relaypin",
+        "motiondetectorpin",
+        "lcdpins",
+        "constants",
+        "general"
     ],
     "type": "object"
 }

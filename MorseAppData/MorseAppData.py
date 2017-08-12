@@ -7,6 +7,8 @@
 
 .. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
 
+.. todo:: create option to build new default config data file
+
 """
 
 from .readconfig import MorseConfig as MorseConfig
@@ -14,6 +16,10 @@ from .workorder import Workorder as WorkOrder
 
 
 class MorseAppData(MorseConfig, WorkOrder):
+    """
+    .. todo:: create option to build new default config data file
+
+    """
     def __init__(self, config_path, workorder_path):
         MorseConfig.__init__(self, config_path)
         WorkOrder.__init__(self, workorder_path)

@@ -43,7 +43,6 @@ class BuildFiles:
 
         """
 
-
     def build_config_file(self):
         r"""This function does something.
 
@@ -54,14 +53,14 @@ class BuildFiles:
 
         """
         # ======================================================
-        config_data = [{'Constants':
-                            [{'DefaultWPM': 13, 'MaxWPM': 25}],
-                        'General':
-                            [{'Color': 'MAGENTA', 'MorseVersion': 'AMERICAN',
-                              'ParagraphSep': '\u00b6', 'SpeedAdjustButtonsEnabled': True}],
-                        'LCDPins': [{'Pin1': 2, 'Pin2': 3}],
-                        'MotionDetectorPin': [{'Pin': 20}],
-                        'RelayPin': [{'Pin': 26}]}]
+        config_data = [{'constants':
+                        [{'defaultwpm': 13, 'maxwpm': 25}],
+                        'general':
+                            [{'color': 'MAGENTA', 'morseversion': 'AMERICAN',
+                              'paragraphsep': '\u00b6', 'speedadjustbuttonsenabled': True}],
+                        'lcdpins': [{'pin1': 2, 'pin2': 3}],
+                        'motiondetectorpin': [{'pin': 20}],
+                        'relaypin': [{'pin': 26}]}]
 
         # =======================================================
         if self.config_path == '':
@@ -82,22 +81,22 @@ class BuildFiles:
         :raises: FileError if permission are bad
 
         """
-        work_order_data = [{'WorkOrder': [{'ID': 1,
-                                           'TONum': 11,
-                                           'LocIssued': 'Salem Yd',
-                                           'Date': '11-02-1944',
-                                           'To': 'C&E Extra 2005 North',
-                                           'At': 'VN Tower',
-                                           'Text': 'No 123 Eng 1001 take siding meet Extra 2005'
-                                                   ' North at Kell instead of Texico. take siding'
-                                                   ' meet No 174 Eng 895 and Extra 1937 North at'
-                                                   ' Benton. No 122 Eng 222 take siding meet'
-                                                   ' No 123 Eng 1001 at Texico. ',
-                                           'Status': 'MadeComplete',
-                                           'Time': '0659',
-                                           'Dispatcher': 'RED',
-                                           'Operator': 'Cole',
-                                           'StationColor': 'BLUE'}]}]
+        work_order_data = [{'trainorder': [{'id': 1,
+                                            'trnordnum': 11,
+                                            'locissued': 'Salem Yd',
+                                            'date': '11-02-1944',
+                                            'to': 'C&E Extra 2005 North',
+                                            'at': 'VN Tower',
+                                            'message': 'No 123 Eng 1001 take siding meet Extra 2005'
+                                                    ' North at Kell instead of Texico. take siding'
+                                                    ' meet No 174 Eng 895 and Extra 1937 North at'
+                                                    ' Benton. No 122 Eng 222 take siding meet'
+                                                    ' No 123 Eng 1001 at Texico. ',
+                                            'status': 'MadeComplete',
+                                            'time': '0659',
+                                            'dispatcher': 'RED',
+                                            'operator': 'Cole',
+                                            'stationcolor': 'BLUE'}]}]
 
         # =======================================================
         if self.workorder_path == '':
@@ -105,7 +104,7 @@ class BuildFiles:
             self.workorder_path = os.path.join(os.path.sep, loc_path, '..', 'data')
         self.workorder_path = os.path.normpath(self.workorder_path)
         os.makedirs(self.workorder_path, exist_ok=True)
-        self.workorder_path = os.path.join(os.path.sep, self.workorder_path, 'work_orders.json')
+        self.workorder_path = os.path.join(os.path.sep, self.workorder_path, 'train_orders.json')
 
         file = open(self.workorder_path, mode='w+', encoding='utf-8')
         json.dump(work_order_data, file, sort_keys=True, indent=4)
