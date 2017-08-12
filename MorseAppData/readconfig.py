@@ -19,11 +19,11 @@ import json
 import os
 from .buildfiles import BuildFiles
 
+
 try:
     from FrozenJSON import FrozenJSON
 except ImportError:
     import sys
-
     FrozenJSON = sys.modules[__package__ + '.FrozenJSON']
 
 
@@ -36,6 +36,7 @@ class MorseConfig:
     no exception handling at present.
 
     .. todo:: NEED TO REFACTOR CONNECTION TO JSON FILES
+    .. todo:: Add Exception to path exists test
 
     :param configpath:
 
@@ -67,7 +68,7 @@ class MorseConfig:
         self.paragraph_sep = 'XXX'
         self.station_color = False
         # Initialize data
-        self.getconfig()  # get values
+        # self.getconfig()  # get values
 
     @property
     def config_path(self) -> str:
@@ -98,22 +99,20 @@ class MorseConfig:
             buildfiles = BuildFiles(config_path=self._config_path)
             buildfiles.build_config_file()
 
-
-    def getconfig(self):
+    def readconfig(self):
         r"""
         Optional method to load the config data into the data again.
         This happens on init of the class, but can be used to load changes,
         if the config file is changed.
 
         """
-        self.lcd_pin1 = int(self._configdata.LCDPins[0].Pin1)
-        self.lcd_pin2 = int(self._configdata.LCDPins[0].Pin2)
-        self.relay_pin = int(self._configdata.RelayPin[0].Pin)
-        self.motion_det_pin = int(self._configdata.MotionDetectorPin[0].Pin)
-        self.wpm = int(self._configdata.Constants[0].DefaultWPM)
-        self.max_wpm = int(self._configdata.Constants[0].MaxWPM)
-        self.speed_adjust = bool(self._configdata.General[0].SpeedAdjustButtonsEnabled)
-        self._color_str = str(self._configdata.General[0].Color)
-        self.color = self._parse_color()
-        self.paragraph_sep = str(self._configdata.General[0].ParagraphSep)
-        self.station_color_enabled = bool(self._configdata.General[0].StationColor)
+        self.lcd_pin1 = int(self._configdata.lcdpins[0].pin1)
+        self.lcd_pin2 = int(self._configdata.lcdpins[0].pin2)
+        self.relay_pin = int(self._configdata.relaypin[0].pin)
+        self.motion_det_pin = int(self._configdata.motiondetectorpin[0].pin)
+        self.wpm = int(self._configdata.constants[0].defaultwpm)
+        self.max_wpm = int(self._configdata.constants[0].maxwpm)
+        self.speed_adjust = bool(self._configdata.general[0].speedadjustbuttonsenabled)
+        self._color_str = str(self._configdata.general[0].color)
+        self.paragraph_sep = str(self._configdata.general[0].paragraphsep)
+        self.station_color_enabled = bool(self._configdata.general[0].stationcolor)

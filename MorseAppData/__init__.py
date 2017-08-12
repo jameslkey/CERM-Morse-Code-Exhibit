@@ -15,11 +15,11 @@ Parsing Control for Adafruit_CharLCD in CERMMorse.
 
 """
 
-from .readconfig import MorseConfig
-from .trainorder import Trainorder
+# from .readconfig import MorseConfig
+# from .trainorder import Trainorder
 from .MorseAppData import MorseAppData
-from .buildfiles import BuildFiles
+# from .buildfiles import BuildFiles
 
 
-__all__ = ['MorseConfig', 'Trainorder', 'MorseAppData', 'BuildFiles', ]
+__all__ = ['MorseAppData', ]
 

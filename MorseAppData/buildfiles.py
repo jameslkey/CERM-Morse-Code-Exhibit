@@ -57,7 +57,8 @@ class BuildFiles:
                         [{'defaultwpm': 13, 'maxwpm': 25}],
                         'general':
                             [{'color': 'MAGENTA', 'morseversion': 'AMERICAN',
-                              'paragraphsep': '\u00b6', 'speedadjustbuttonsenabled': True}],
+                              'paragraphsep': '\u00b6', 'speedadjustbuttonsenabled': True,
+                              'stationcolor': True}],
                         'lcdpins': [{'pin1': 2, 'pin2': 3}],
                         'motiondetectorpin': [{'pin': 20}],
                         'relaypin': [{'pin': 26}]}]

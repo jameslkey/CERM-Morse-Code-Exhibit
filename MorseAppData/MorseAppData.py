@@ -11,40 +11,20 @@
 
 """
 
-from .readconfig import MorseConfig as MorseConfig
-from .trainorder import Trainorder as WorkOrder
+from .readconfig import MorseConfig
+from .trainorder import Trainorder
 
 
-class MorseAppData(MorseConfig, WorkOrder):
+class MorseAppData(MorseConfig, Trainorder):
     """
     .. todo:: create option to build new default config data file
 
     """
-    def __init__(self, config_path, workorder_path):
-        MorseConfig.__init__(self, config_path)
-        WorkOrder.__init__(self, workorder_path)
-        self._conf_color_str = MorseConfig._color_strcolor
-        self._wo_color_str = WorkOrder._station_color
-
-    @property
-    def workorder_color(self) -> list:
-        color = self.parse_color(self._wo_color_str)
-        return color
-
-    @workorder_color.setter
-    def workorder_color(self, color: list):
-        # Todo: create validation
-        self.rev_parse_color(color)
-
-    @property
-    def default_color(self) -> list:
-        color = self.parse_color(self._conf_color_str)
-        return color
-
-    @default_color.setter
-    def default_color(self, color: list):
-        # Todo: create validation
-        self.rev_parse_color(color)
+    def __init__(self, configpath: str = '', trainorderpath: str = ''):
+        MorseConfig.__init__(self, configpath)
+        Trainorder.__init__(self, trainorderpath)
+        self.getconfig()
+        self.gettrainorder()
 
     @staticmethod
     def parse_color(color_str: str) -> list:
@@ -104,3 +84,21 @@ class MorseAppData(MorseConfig, WorkOrder):
         else:  # [1, 1, 1]
             color_str = "WHITE"
         return color_str
+
+    def getconfig(self):
+        r"""
+        Write Comments
+
+        """
+        self.readconfig()
+        self.color = self.parse_color(self._color_str)
+
+    def gettrainorder(self, toid: int = 1):
+        r"""
+        Write Comments
+
+        :param toid:
+
+        """
+        self.readtrainorder(toid)
+        self.station_color = self.parse_color(self._station_color)

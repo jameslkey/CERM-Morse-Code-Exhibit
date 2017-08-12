@@ -36,8 +36,13 @@
       "speedadjustbuttonsenabled": true,
       "color": "MAGENTA",
       "paragraphsep": "\u00B6",
+<<<<<<< HEAD
       "morseversion": "AMERICAN"
 >>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
+=======
+      "morseversion": "AMERICAN",
+      "stationcolor": true
+>>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
     }
   ]
 }

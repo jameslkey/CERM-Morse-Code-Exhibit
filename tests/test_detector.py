@@ -5,6 +5,11 @@ CERMMorse : test_detector
 Author : James L. Key
 """
 from unittest import TestCase
+<<<<<<< HEAD
+=======
+from MorseAppData import MorseConfig
+from RPiMorseDrv import Detector
+>>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
 
 from readconfig import Config
 from rpimorsedrv import Detector
@@ -14,6 +19,7 @@ __project__ = 'CERMMorse'
 
 class TestDetector(TestCase):
     def setUp(self):
+<<<<<<< HEAD
         self.config = Config(configpath='../data/config.json')
         self.det = Detector(self.config)
 
@@ -21,6 +27,20 @@ class TestDetector(TestCase):
 <<<<<<< HEAD
         self.assertTrue(self.det.detect())
 =======
+=======
+        self._config_path = os.path.dirname(__file__)
+        self._config_path = os.path.join(os.path.sep, self._config_path, '..', 'data', 'config.json')
+        self.config = MorseConfig(configpath=self._config_path)
+        self.config.getconfig()
+        self.pin = self.config.motion_det_pin
+        self.det = Detector(self.pin)
+
+    def test_detect(self):
+        """
+        .. todo:: Write unittest.mock object
+        :return:
+        """
+>>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
         if os.name != 'posix':
             self.skipTest('Test not supported on non-GPIO device')
         else:

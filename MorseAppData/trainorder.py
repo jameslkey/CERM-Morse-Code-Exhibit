@@ -2,10 +2,8 @@
 """
 Comments go here!!!
 
-Parsing Control for Adafruit_CharLCD in CERMMorse.
-
 :program: CERMMorse
-:file: workorder
+:file: trainorder
 :platform: Cross-Platform
 :synopsis: Change this text.
 
@@ -18,7 +16,6 @@ Parsing Control for Adafruit_CharLCD in CERMMorse.
 
 """
 
-import codecs
 import json
 import os
 
@@ -36,61 +33,79 @@ class Trainorder:
 
 
     """
-    def __init__(self, wopath: str = ''):
+    def __init__(self, trainorderpath: str = ''):
         r"""
 
-        :param wopath:
+        :param trainorderpath:
 
         """
-        if wopath == '':
-            wopath = os.path.dirname(os.getcwd())
-            wopath = os.path.join(wopath, 'CERMMorse')
-            wopath = os.path.join(wopath, 'data')
-            wopath = os.path.join(wopath, 'train_orders.json')
-        j_s_o_n = os.path.normpath(wopath)
+        self._trainorder_path = trainorderpath
+        if self._trainorder_path == '':
+            loc_path = os.path.dirname(__file__)
+            self._trainorder_path = os.path.join(os.path.sep, loc_path, '..', 'data', 'train_orders.json')
+        j_s_o_n = os.path.normpath(self._trainorder_path)
+
         if not os.path.exists(j_s_o_n):
-            raise WorkorderEx('Work Order File {} does not exists'.format(j_s_o_n))
-        with codecs.open(j_s_o_n, 'r', encoding='utf-8') as f:  # Needs encoding to force raspbian to read correctly
-            self._rawwodata = json.load(f)
-        self._wodata = FrozenJSON(self._rawwodata)
+            raise TrainorderEx('Train Order File {} does not exists'.format(j_s_o_n))
+
+        with open(j_s_o_n, 'r', encoding='utf-8') as f:  # Needs encoding to force raspbian to read correctly
+            self._rawtodata = json.load(f)
+        self._todata = FrozenJSON(self._rawtodata)
+
         self.trnordnum = 0
         self.locissued = ''
         self.date = ''
         self.to = ''
         self.at = ''
-        self.text = ''
+        self.message = ''
         self.status = 0
         self.time = 0
         self.dispatcher = ''
         self.operator = ''
+        self._station_color = ''
 
-    def getworkorder(self, woid:  int = 1):
-        if woid <= 0:
-            raise WorkorderEx('Work Order Number must be Greater than zero')
-        if woid > self.numworkorders():
-            raise WorkorderEx('Work Order Does not exist in file or file is improperly formatted')
-        woid += 1
-        self.trnordnum = str(self._wodata.WorkOrder[woid].TONum)
-        self.locissued = str(self._wodata.WorkOrder[woid].LocIssued)
-        self.date = str(self._wodata.WorkOrder[woid].Date)
-        self.to = str(self._wodata.WorkOrder[woid].To)
-        self.at = str(self._wodata.WorkOrder[woid].At)
-        self.text = str(self._wodata.WorkOrder[woid].Text)
-        self.status = str(self._wodata.WorkOrder[woid].Status)
-        self.time = str(self._wodata.WorkOrder[woid].Time)
-        self.dispatcher = str(self._wodata.WorkOrder[woid].Dispatcher)
-        self.operator = str(self._wodata.WorkOrder[woid].Operator)
-        self._station_color = str(self._wodata.WorkOrder[woid].StationColor)
+    def readtrainorder(self, toid:  int = 1):
+        r"""
+        More comments needed
 
-    def numworkorders(self) -> int:
-        wos = 0
-        for _ in self._rawwodata['WorkOrder']:
-            wos += 1
-        return wos
+        :param toid:
+
+        """
+        if toid <= 0:
+            raise TrainorderEx('Train Order Number must be Greater than zero')
+        if toid > self.numtrainorders():
+            raise TrainorderEx('Train Order Does not exist in file or file is improperly formatted')
+        toid += 1
+        self.trnordnum = str(self._todata.trainorder[toid].trnordnum)
+        self.locissued = str(self._todata.trainorder[toid].locissued)
+        self.date = str(self._todata.trainorder[toid].date)
+        self.to = str(self._todata.trainorder[toid].to)
+        self.at = str(self._todata.trainorder[toid].at)
+        self.message = str(self._todata.trainorder[toid].message)
+        self.status = str(self._todata.trainorder[toid].status)
+        self.time = str(self._todata.trainorder[toid].time)
+        self.dispatcher = str(self._todata.trainorder[toid].dispatcher)
+        self.operator = str(self._todata.trainorder[toid].operator)
+        self._station_color = str(self._todata.trainorder[toid].stationcolor)
+
+    def numtrainorders(self) -> int:
+        r"""
+        Comment here
+
+        :return:
+
+        """
+        tos = 0
+        for _ in self._rawtodata['trainorder']:
+            tos += 1
+        return tos
 
 
-class WorkorderEx(Exception):
+class TrainorderEx(Exception):
     r"""
+    Yup here too
+
+    .. todo:: Determine if this is needed
 
     :param message:
 

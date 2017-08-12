@@ -5,16 +5,28 @@ CERMMorse : test_config
 Author : James L. Key
 """
 from unittest import TestCase
+<<<<<<< HEAD
 
 from readconfig import Config
 
 __author__ = 'James L. Key'
 __project__ = 'CERMMorse'
+=======
+import os
+from MorseAppData import MorseAppData
+>>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
 
 
 class TestConfig(TestCase):
     def setUp(self):
+<<<<<<< HEAD
         self.conf = Config(configpath='../data/config.json')
+=======
+        loc_path = os.path.dirname(__file__)
+        config_file = os.path.join(os.path.sep, loc_path, '..', 'data', 'config.json')
+        config_file = os.path.normpath(config_file)
+        self.conf = MorseAppData(configpath=config_file)
+>>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
         self.conf.getconfig()
 
     def evalcolor(self):
