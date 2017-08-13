@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Graphical program to aid in the configuration of the CERM program.
-
+A read-only façade for navigating a JSON-like object using attribute notation
 :program: CERMMorse
 :file: frozenjson
 :platform: Cross-Platform

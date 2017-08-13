@@ -247,6 +247,7 @@ class LcdScroll:
                 for row in range(0, rows - 1):
                     self.lcd.set_cursor(0, row)
                     self.lcd.message(self._screen_buffer[row])
+                self._screen_buffer = screen_buffer
 
 
         # break into words
