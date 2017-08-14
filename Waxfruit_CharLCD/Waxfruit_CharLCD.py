@@ -1,13 +1,19 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 """
-CERMMorse : Waxfruit_CharLCD
-5/18/2017 : 10:38 PM
-Author : James L. Key
-Modification of the Adafruit CharLCD module, it's neutered to work on windows for development purposes
-"""
+Comments go here!!!
 
-__author__ = 'James L. Key'
-__project__ = 'CERMMorse'
+PC Emulation for Adafruit_CharLCD
+
+:program: CERMMorse
+:file: Waxfruit_CharLCD
+:platform: Cross-Platform
+:synopsis: Change this text.
+
+.. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
+
+.. py:currentmodule:: Waxfruit_CharLCD
+
+"""
 
 # Original File
 # Copyright (c) 2014 Adafruit Industries
@@ -106,18 +112,18 @@ class Adafruit_CharLCD(object):
         connected to the Lcd RS, clock enable, and data line 4 through 7 connections.
         The Lcd will be used in its 4-bit mode so these 6 lines are the only ones
         required to use the Lcd.  You must also pass in the number of columns and
-        lines on the Lcd.  
+        lines on the Lcd.
         If you would like to control the backlight, pass in the pin connected to
         the backlight with the backlight parameter.  The invert_polarity boolean
-        controls if the backlight is one with a LOW signal or HIGH signal.  The 
+        controls if the backlight is one with a LOW signal or HIGH signal.  The
         default invert_polarity value is True, i.e. the backlight is on with a
-        LOW signal.  
-        You can enable PWM of the backlight pin to have finer control on the 
-        brightness.  To enable PWM make sure your hardware supports PWM on the 
+        LOW signal.
+        You can enable PWM of the backlight pin to have finer control on the
+        brightness.  To enable PWM make sure your hardware supports PWM on the
         provided backlight pin and set enable_pwm to True (the default is False).
         The appropriate PWM library will be used depending on the platform, but
         you can provide an explicit one with the pwm parameter.
-        The initial state of the backlight is ON, but you can set it to an 
+        The initial state of the backlight is ON, but you can set it to an
         explicit initial state with the initial_backlight parameter (0 is off,
         1 is on/full bright).
         You can optionally pass in an explicit GPIO class,
@@ -286,9 +292,9 @@ class Adafruit_RGBCharLCD(Adafruit_CharLCD):
                  enable_pwm=False,
                  pwm='',
                  initial_color=(1.0, 1.0, 1.0)):
-        """Initialize the Lcd with RGB backlight.  RS, EN, and D4...D7 parameters 
-        should be the pins connected to the Lcd RS, clock enable, and data line 
-        4 through 7 connections. The Lcd will be used in its 4-bit mode so these 
+        """Initialize the Lcd with RGB backlight.  RS, EN, and D4...D7 parameters
+        should be the pins connected to the Lcd RS, clock enable, and data line
+        4 through 7 connections. The Lcd will be used in its 4-bit mode so these
         6 lines are the only ones required to use the Lcd.  You must also pass in
         the number of columns and lines on the Lcd.
         The red, green, and blue parameters define the pins which are connected

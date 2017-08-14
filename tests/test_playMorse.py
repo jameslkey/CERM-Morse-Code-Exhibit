@@ -1,18 +1,28 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 """
-CERMMorse : test_playMorse
-5/7/2017 : 11:30 PM
-Author : James L. Key
+Comments go here!!!
+
+:program: CERMMorse
+:file: test_playMorse
+:platform: Cross-Platform
+:synopsis: Change this text.
+
+.. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
+
+.. py:currentmodule:: Unittests
+
 """
 from unittest import TestCase
+from unittest.mock import Mock
 
-__author__ = 'James L. Key'
-__project__ = 'CERMMorse'
+from PlayMorse import playmorse
 
 
+
+# Begin
 class TestPlayMorse(TestCase):
-    def test_play(self):
-        self.fail()
+    def setUp(self):
+        pass
 
     def test_playchar(self):
-        self.fail()
+        pass

@@ -1,13 +1,8 @@
 {
   "constants": [
     {
-<<<<<<< HEAD
-      "DefaultWPM": 18,
-      "MaxWPM": 25
-=======
       "defaultwpm": 13,
       "maxwpm": 25
->>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
     }
   ],
   "lcdpins": [
@@ -28,25 +23,11 @@
   ],
   "general": [
     {
-<<<<<<< HEAD
-      "SpeedAdjustButtonsEnabled": true,
-      "Color": "MAGENTA",
-      "ParagraphSep": "\u00B6"
-=======
       "speedadjustbuttonsenabled": true,
       "color": "MAGENTA",
       "paragraphsep": "\u00B6",
-<<<<<<< HEAD
-      "morseversion": "AMERICAN"
->>>>>>> Too Many changes not to commit. Begun refactor of code to remove 'code smell'.
-=======
       "morseversion": "AMERICAN",
-<<<<<<< HEAD
-      "stationcolor": true
->>>>>>> Refactored readconfig and trainorder(workorder)into MorseAppData package. Still need polishing but functional.
-=======
       "stationcolors": true
->>>>>>> Minor logic change to trainorder and fixed tests.
     }
   ]
 }

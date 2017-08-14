@@ -11,7 +11,7 @@ This is the software for the Connecticut Eastern Railroad Museum's Dynamic Morse
 
 #### This project uses *American Morse* code ***NOT** International* Morse Code, it can be modified without too many issues.
 There are more options in the works:
-* a Tk based workorder and config editor
+* a wxPython based workorder and config editor
 * choice of Morse varients
 * possibly a morse interpreter from a GPIO connected Key
 * integrated menu, using the LCD Plate's push Buttons
