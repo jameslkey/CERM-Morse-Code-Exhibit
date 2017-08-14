@@ -49,7 +49,7 @@ class Application(wx.App):
         Returns:
             bool: Success?
         """
-        frame = GUI(None, -1, "Classes interactions")
+        frame = GUI(None)
         frame.Show(True)
         return True
 
