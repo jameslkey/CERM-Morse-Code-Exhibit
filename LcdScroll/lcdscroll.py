@@ -27,9 +27,9 @@ class LcdScroll:
     Parsing Control for Adafruit_CharLCD in CERMMorse
 
     This class implements a set of methods to scroll messages upward on a LCD display.
-    The limits are adjustable to different lengths and _rows depending on hardware, It parses
+    The limits are adjustable to different lengths and rows depending on hardware, It parses
     the message into words and check if there is enough space left on the screen and if not
-    pushes the display up then prints the word
+    pushes the display up then prints the word.
     Also a method to move the cursor from letter to letter like follow the bouncing ball
     in a sing along.
 
@@ -39,7 +39,7 @@ class LcdScroll:
 
     """
 
-    def __init__(self, lcd, cols: int=16, lines: int=2):
+    def __init__(self, lcd, cols: int=16, lines: int=2, cursor: bool=False):
         #: Adafruit CharLCD Object
         if not isinstance(lcd, Lcd.Adafruit_CharLCDPlate):
             self.lcd = Lcd.Adafruit_CharLCDPlate(cols=cols, lines=lines)
@@ -57,7 +57,7 @@ class LcdScroll:
         self._word_buffer = ''
         self._remaining_line_buffer, _ = self.display_size
         #: Internal "bouncing ball" cursor switch
-        self._cursor_enabled = False
+        self._cursor_enabled = cursor
         #: current position of cursor
         self._cursor_position = 0
 
@@ -134,7 +134,7 @@ class LcdScroll:
         Set display size
 
         """
-        if columns or rows < 0:
+        if columns or rows <= 0:
             raise LcdScrollEx('Error display_size must be positive integers greater than zero')
         self._display_size = (columns, rows)
 
@@ -189,23 +189,25 @@ class LcdScroll:
 
     def send_character(self, char: str):
         """
-        Unused
+        Sends one character to the display. Primarily used by bouncing ball option.
+        To be overridden by derived classes to add functionality.
 
         :param char:
 
 
         """
-        pass
+        self.lcd.message(char)
 
     def send_word(self, word: str):
         """
-        Unused
+        Sends one word to the display.
+        To be overridden by derived classes to add functionality.
 
         :param word:
 
 
         """
-        pass
+        self.lcd.message(word)
 
     def send_message(self):
         """
@@ -226,8 +228,8 @@ class LcdScroll:
         move visible cursor to first letter of word
         send corresponding morse character
         iterate though word one letter at a time
-        if not Bouncing Ball
-        send word one character at a time to LCD and Morse
+        --if not Bouncing Ball
+        --send word one character at a time to LCD
 
         '''
         # set initial state
@@ -248,7 +250,6 @@ class LcdScroll:
                     self.lcd.set_cursor(0, row)
                     self.lcd.message(self._screen_buffer[row])
                 self._screen_buffer = screen_buffer
-
 
         # break into words
         local_message = self.message.split(' ')
@@ -278,16 +279,16 @@ class LcdScroll:
                             # if iteration var = word length: break | or try: except:?
                     else:
                         while True:
-                            # while True
-                            # iterate number of letters
-                            # display letter
-                            self.send_character(char)  # play char
+                            # while True iterate number of letters
+                            for char in word.split():
+                                # display letter
+                                self.send_character(char)
 
 
 
-                    if word:  # catch null characters
+                    """if word:  # catch null characters
                         self.lcd.message(self._screen_buffer[0])
-                    self._screen_buffer[0] = ''
+                    self._screen_buffer[0] = ''"""
             except IndexError:
                 break
 

@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 """
 CERMMorse : test_CERMMorse
 5/7/2017 : 11:30 PM

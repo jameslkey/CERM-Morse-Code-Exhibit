@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 """
 CERMMorse : __init__
 5/18/2017 : 10:38 PM

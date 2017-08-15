@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import Adafruit_CharLCD as LCD
 import RPi.GPIO as GPIO
 

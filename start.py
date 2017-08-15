@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 """
 CERMMorse : start
 5/12/2017 : 3:46 PM
