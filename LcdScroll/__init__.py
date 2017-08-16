@@ -16,5 +16,6 @@ Screen display library fro Adafruit CharLCD
 """
 
 from .lcdscroll import LcdScroll
+from .lcdscroll import LcdScrollEx
 
-__all__ = ['LcdScroll', ]
+__all__ = ['LcdScroll', 'LcdScrollEx', ]

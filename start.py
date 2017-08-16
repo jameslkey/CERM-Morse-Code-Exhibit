@@ -8,13 +8,11 @@ Loads the main function from morse as a daemon
 This seems to only work in *nix
 requires python-daemon-3k module
 """
+"""import os
+if os != 'nt':
+    import daemon
 
-import daemon
+    from CERMMorse import CERMMorse
 
-from Morse import CERMMorse
-
-__author__ = 'James L. Key'
-__project__ = 'CERMMorse'
-
-with daemon.DaemonContext():
-    CERMMorse.main()
+    with daemon.DaemonContext():
+        CERMMorse.main()"""

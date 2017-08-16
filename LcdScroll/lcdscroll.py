@@ -16,9 +16,10 @@ Comments go here!!!
 
 import os
 if os.name == 'nt':
-    from Waxfruit_CharLCD import Adafruit_CharLCDPlate as Lcd
+    import Waxfruit_CharLCD as Adafruit_CharLCDPlate
 else:
-    import Adafruit_CharLCD as Lcd  # pylint: disable=F0401
+    import Adafruit_CharLCD
+    from Adafruit_CharLCD import Adafruit_CharLCDPlate  # pylint: disable=F0401
 
 
 class LcdScroll:
@@ -41,11 +42,11 @@ class LcdScroll:
 
     def __init__(self, lcd, cols: int=16, lines: int=2, cursor: bool=False):
         #: Adafruit CharLCD Object
-        if not isinstance(lcd, Lcd.Adafruit_CharLCDPlate):
-            self.lcd = Lcd.Adafruit_CharLCDPlate(cols=cols, lines=lines)
+        """if not isinstance(lcd, Adafruit_CharLCD.Adafruit_CharLCD):
+            self.lcd = Adafruit_CharLCD.Adafruit_CharLCDPlate(cols=cols, lines=lines)"""
 
         #: Tuple containing display and init to common values
-        self._display_size = (cols, lines)
+        self._display_size = [cols, lines]
         #: Internal Message to send
         self._message = ''
         #: Internal dictionary of special characters
@@ -117,7 +118,7 @@ class LcdScroll:
         Property: LCD display area columns, rows
 
         :getter: Get ScrollLCD.display_size property
-        :setter (Int, Int): Set the ScrollLcd.display_size property
+        :setter Int, Int: Set the ScrollLcd.display_size property
 
         Examples::
 
@@ -126,17 +127,45 @@ class LcdScroll:
             LcdScroll.display_size(columns=16, rows=2)
 
         """
-        return self._display_size
+        return self._display_size[0], self._display_size[1]
 
-    @display_size.setter
-    def display_size(self, columns: int = 16, rows: int = 2):
+    @property
+    def columns(self) -> int:
+        r"""
+
+        :return int:
+
+        """
+        return self._display_size[0]
+
+    @columns.setter
+    def columns(self, columns: int = 16):
         r"""
         Set display size
 
         """
-        if columns or rows <= 0:
+        if columns <= 0:
             raise LcdScrollEx('Error display_size must be positive integers greater than zero')
-        self._display_size = (columns, rows)
+        self._display_size[0] = columns
+
+    @property
+    def lines(self) -> int:
+        r"""
+
+        :return int:
+
+        """
+        return self._display_size[1]
+
+    @lines.setter
+    def lines(self, lines: int = 1):
+        r"""
+        Set display size
+
+        """
+        if lines <= 0:
+            raise LcdScrollEx('Error display_size must be positive integers greater than zero')
+        self._display_size[1] = lines
 
     @property
     def display_cursor(self) -> bool:

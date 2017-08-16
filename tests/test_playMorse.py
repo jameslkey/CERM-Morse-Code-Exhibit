@@ -13,16 +13,16 @@ Comments go here!!!
 
 """
 from unittest import TestCase
-from unittest.mock import Mock
+from unittest import skip
 
 from PlayMorse import playmorse
 
 
 
-# Begin
 class TestPlayMorse(TestCase):
     def setUp(self):
         pass
 
+    @skip
     def test_playchar(self):
         pass

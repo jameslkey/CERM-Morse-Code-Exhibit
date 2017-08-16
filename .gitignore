@@ -163,3 +163,4 @@ fabric.properties
 /scratch/
 /Docs/_build/
 /Docs/_static/
+/xunit-reports/xunit-result.xml
