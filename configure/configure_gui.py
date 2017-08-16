@@ -16,11 +16,16 @@ import wx.adv
 from configure_evt import Events
 
 
+class ConfigPanel(wx.ScrolledWindow):
+    def __init__(self, parent, *args, **kwargs):
+        wx.ScrolledWindow.__init__(self, parent, *args, **kwargs)
+
+
 class GUI(wx.Frame):
     def __init__(self, parent):
 
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u'CERM Morse Code Train Order and Configuration Editor',
-                          pos=wx.DefaultPosition, size=wx.Size(650, 650),
+                          pos=wx.DefaultPosition, size=(650, 650),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
 
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
@@ -59,13 +64,13 @@ class GUI(wx.Frame):
         self.btn_add_to = wx.Button(statb_to_list_outer.GetStaticBox(), wx.ID_ANY, u'Add Trainorder',
                                     wx.DefaultPosition, wx.DefaultSize, 0)
         self.btn_add_to.SetToolTip(u'Add new trainorder')
-        self.btn_add_to.SetMinSize(wx.Size(115, -1))
+        self.btn_add_to.SetMinSize((115, -1))
         bs_to_list_btns.Add(self.btn_add_to, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
         self.btn_delete_to = wx.Button(statb_to_list_outer.GetStaticBox(), wx.ID_DELETE, u'Delete Trainorder',
                                        wx.DefaultPosition, wx.DefaultSize, 0)
         self.btn_delete_to.SetToolTip(u'Delete selected trainorder')
-        self.btn_delete_to.SetMinSize(wx.Size(115, -1))
+        self.btn_delete_to.SetMinSize((115, -1))
         bs_to_list_btns.Add(self.btn_delete_to, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
         statb_to_list_outer.Add(bs_to_list_btns, 0, wx.TOP, 5)
@@ -118,7 +123,7 @@ class GUI(wx.Frame):
         self.txt_loc = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                    wx.DefaultSize, 0)
         self.txt_loc.SetToolTip(u'Where the trainorder was issued')
-        self.txt_loc.SetMinSize(wx.Size(300, -1))
+        self.txt_loc.SetMinSize((300, -1))
         fgs_to_data_inner.Add(self.txt_loc, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # Date
@@ -139,7 +144,7 @@ class GUI(wx.Frame):
         self.txt_to = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
         self.txt_to.SetToolTip(u'Train to complete trainorder')
-        self.txt_to.SetMinSize(wx.Size(300, -1))
+        self.txt_to.SetMinSize((300, -1))
         fgs_to_data_inner.Add(self.txt_to, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # At location
@@ -150,7 +155,7 @@ class GUI(wx.Frame):
         self.txt_at = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
         self.txt_at.SetToolTip(u'Where the order is to occur')
-        self.txt_at.SetMinSize(wx.Size(300, -1))
+        self.txt_at.SetMinSize((300, -1))
         fgs_to_data_inner.Add(self.txt_at, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # Message Text
@@ -161,7 +166,7 @@ class GUI(wx.Frame):
         self.txt_message = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString,
                                        wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL | wx.TE_MULTILINE)
         self.txt_message.SetToolTip(u'Oder details')
-        self.txt_message.SetMinSize(wx.Size(300, 100))
+        self.txt_message.SetMinSize((300, 100))
         fgs_to_data_inner.Add(self.txt_message, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # Status
@@ -193,7 +198,7 @@ class GUI(wx.Frame):
         self.txt_disp = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                     wx.DefaultSize, 0)
         self.txt_disp.SetToolTip(u'Name of dispatcher')
-        self.txt_disp.SetMinSize(wx.Size(300, -1))
+        self.txt_disp.SetMinSize((300, -1))
         fgs_to_data_inner.Add(self.txt_disp, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # Operator
@@ -204,7 +209,7 @@ class GUI(wx.Frame):
         self.txt_op = wx.TextCtrl(statb_to_data_outer.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition,
                                   wx.DefaultSize, 0)
         self.txt_op.SetToolTip(u'Name of morse operator')
-        self.txt_op.SetMinSize(wx.Size(300, -1))
+        self.txt_op.SetMinSize((300, -1))
         fgs_to_data_inner.Add(self.txt_op, 0, wx.ALIGN_LEFT | wx.ALL, 5)
 
         # Station color

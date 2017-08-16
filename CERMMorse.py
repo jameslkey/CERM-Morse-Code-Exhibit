@@ -198,7 +198,8 @@ def main():
     cerm = CERMMorse(configpath=args.config_path, trainorderpath=args.to_path)
     cerm.run()
 
+if __name__ == '__main__':
 
-# Start
-main()
+    # Start
+    main()
 

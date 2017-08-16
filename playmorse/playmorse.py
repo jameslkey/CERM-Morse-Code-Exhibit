@@ -18,9 +18,6 @@ Parsing Control for Adafruit_CharLCD in CERMMorse.
 from math import floor
 from RPiMorseDrv import Relay
 
-__author__ = 'James L. Key'
-__project__ = 'CERM20'
-
 
 class PlayMorse:
     r"""
@@ -29,9 +26,10 @@ class PlayMorse:
     def __init__(self, wpm: int, relaypin: int, invertrelay: bool = False):
         r"""
 
-        :param wpm:
-        :param relaypin:
-        :param invertrelay:
+        Args:
+            wpm:
+            relaypin:
+            invertrelay:
         """
         self._pin = relaypin
         self._invert = invertrelay
@@ -53,8 +51,11 @@ class PlayMorse:
     def playchar(self, char):
         r"""
 
-        :param char:
-        :return:
+        Args:
+            char:
+
+        Returns:
+
         """
         relay = Relay(pin=self._pin, invert=self._invert)
         for element in char:

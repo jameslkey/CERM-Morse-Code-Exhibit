@@ -40,7 +40,7 @@ class LcdScroll:
 
     """
 
-    def __init__(self, lcd, cols: int=16, lines: int=2, cursor: bool=False):
+    def __init__(self, lcd, cols: int=16, lines: int=2, cursor: bool=False, ):
         #: Adafruit CharLCD Object
         """if not isinstance(lcd, Adafruit_CharLCD.Adafruit_CharLCD):
             self.lcd = Adafruit_CharLCD.Adafruit_CharLCDPlate(cols=cols, lines=lines)"""
@@ -82,7 +82,10 @@ class LcdScroll:
     @message.setter
     def message(self, message: str):
         r"""
-        Set current message into buffer to be sent
+
+        Args:
+            message:
+
 
         """
         self._message = message
@@ -100,6 +103,9 @@ class LcdScroll:
             spec_char = LcdScroll.special_characters()
 
             LcdScroll.special_characters({'\u00B': '\x00', }
+
+
+        Returns:
 
         """
         return self._special_characters

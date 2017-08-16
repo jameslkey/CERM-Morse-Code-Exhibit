@@ -28,15 +28,12 @@ class TestRelay(TestCase):
         self.conf.getconfig()
         self.relay = Relay(pin=self.conf.relay_pin, invert=True)
 
-    @skip
     def test_fire(self):
         self.relay.fire(1)
 
-    @skip
     def test_pause(self):
         self.relay.pause(.25)
 
-    @skip
     def test_both(self):
         self.test_fire()
         self.test_pause()

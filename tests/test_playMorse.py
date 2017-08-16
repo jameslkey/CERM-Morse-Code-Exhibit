@@ -18,7 +18,6 @@ from unittest import skip
 from PlayMorse import playmorse
 
 
-
 class TestPlayMorse(TestCase):
     def setUp(self):
         pass
