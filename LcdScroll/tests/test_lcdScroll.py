@@ -10,7 +10,6 @@ Comments go here!!!
 .. moduleauthor:: James L. Key <james@bluepenguinslutions.com>
 
 """
-import unittest
 from unittest import TestCase
 from LcdScroll import LcdScroll
 from unittest import skip

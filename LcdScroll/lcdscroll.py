@@ -37,10 +37,18 @@ class LcdScroll:
     .. todo:: remove this fake assignment of Lcd.Adafruit...
 
     :param lcd: Adafruit CharLCD object (req.)
+    :param cols:
+    :param lines:
+    :param cursor:
+
 
     """
 
-    def __init__(self, lcd, cols: int=16, lines: int=2, cursor: bool=False, ):
+    def __init__(self, lcd, **kwargs):
+        for k in kwargs.keys():
+            if k in ['cols', 'lines', 'cursor', ]:
+                self.__setattr__(k, kwargs[k])
+
         #: Adafruit CharLCD Object
         """if not isinstance(lcd, Adafruit_CharLCD.Adafruit_CharLCD):
             self.lcd = Adafruit_CharLCD.Adafruit_CharLCDPlate(cols=cols, lines=lines)"""
